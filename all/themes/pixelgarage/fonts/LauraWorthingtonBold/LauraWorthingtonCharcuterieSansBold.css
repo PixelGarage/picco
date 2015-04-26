@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'LauraWorthingtonCharcuterieSansBold';
+    src: url('fonts/LauraWorthingtonCharcuterieSansBold.eot');
+    src: url('fonts/LauraWorthingtonCharcuterieSansBold.eot') format('embedded-opentype'),
+         url('fonts/LauraWorthingtonCharcuterieSansBold.woff2') format('woff2'),
+         url('fonts/LauraWorthingtonCharcuterieSansBold.woff') format('woff'),
+         url('fonts/LauraWorthingtonCharcuterieSansBold.ttf') format('truetype'),
+         url('fonts/LauraWorthingtonCharcuterieSansBold.svg#LauraWorthingtonCharcuterieSansBold') format('svg');
+}

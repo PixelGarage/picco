@@ -1,0 +1,47 @@
+// Define customer specific fonts
+
+@pxl-font-path: '../fonts';
+@pxl-bs-path: '../bootstrap';
+
+// icon font
+@pxl-icon-font: 'FontAwesome';
+
+// title font
+@pxl-title-font: 'LauraWorthingtonCharcuterieSansBold';
+
+// text fonts
+@pxl-text-font: 'LauraWorthingtonCharcuterieSans';
+@pxl-text-font-bold: 'LauraWorthingtonCharcuterieSansBold';
+@pxl-text-font-italics: 'LauraWorthingtonCharcuterieSans';
+@pxl-text-font-bold-italics: 'LauraWorthingtonCharcuterieSansBold';
+@font-family-base: @pxl-text-font;
+
+// form font
+@pxl-form-font: 'LauraWorthingtonCharcuterieSans';
+
+// Font awesome icons
+@import '../fonts/font-awesome/less/font-awesome';
+@fa-font-path: '@{pxl-font-path}/font-awesome/fonts'; // override fa font path (lazy loading)
+
+
+// title font
+@font-face {
+  font-family: 'LauraWorthingtonCharcuterieSansBold';
+  src: url('@{pxl-font-path}/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.eot');
+  src: url('@{pxl-font-path}/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.eot') format('embedded-opentype'),
+  url('@{pxl-font-path}/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.woff2') format('woff2'),
+  url('@{pxl-font-path}/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.woff') format('woff'),
+  url('@{pxl-font-path}/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.ttf') format('truetype'),
+  url('@{pxl-font-path}/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.svg#LauraWorthingtonCharcuterieSansBold') format('svg');
+}
+
+// text fonts
+@font-face {
+  font-family: 'LauraWorthingtonCharcuterieSans';
+  src: url('@{pxl-font-path}/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.eot');
+  src: url('@{pxl-font-path}/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.eot') format('embedded-opentype'),
+  url('@{pxl-font-path}/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.woff2') format('woff2'),
+  url('@{pxl-font-path}/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.woff') format('woff'),
+  url('@{pxl-font-path}/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.ttf') format('truetype'),
+  url('@{pxl-font-path}/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.svg#LauraWorthingtonCharcuterieSans') format('svg');
+}

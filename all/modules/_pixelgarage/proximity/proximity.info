@@ -1,0 +1,8 @@
+name = Proximity Views
+description = "Provides a views style plugin creating regularly or irregularly distributed items animating on mouse approach."
+core = 7.x
+package = Proximity
+
+files[] = views_plugin_style_proximity.inc
+
+dependencies[] = views

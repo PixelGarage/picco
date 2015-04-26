@@ -1,0 +1,11 @@
+name = Bootstrap Carousel Image Field
+description = Adds formatter displaying amage fields as Bootstrap Carousel.
+core = 7.x
+package = Bootstrap
+
+; Information added by Drupal.org packaging script on 2014-12-31
+version = "7.x-3.x-dev"
+core = "7.x"
+project = "bootstrap_carousel_if"
+datestamp = "1420050783"
+

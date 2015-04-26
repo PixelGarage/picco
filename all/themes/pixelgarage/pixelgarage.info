@@ -1,0 +1,67 @@
+name = pixelgarage
+description = Standard theme of Pixelgarage.
+base theme = bootstrap
+core = 7.x
+
+; ========================================
+; Regions
+; ========================================
+regions[navigation] = Navigation
+regions[header] = Top Bar
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Primary
+regions[sidebar_second] = Secondary
+regions[footer] = Footer
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+
+; ========================================
+; Stylesheets
+; ========================================
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/smartmenu/jquery.smartmenus.bootstrap.css
+
+; ========================================
+; Scripts
+; ========================================
+scripts[] = bootstrap/js/affix.js
+scripts[] = bootstrap/js/alert.js
+scripts[] = bootstrap/js/button.js
+scripts[] = bootstrap/js/carousel.js
+scripts[] = bootstrap/js/collapse.js
+scripts[] = bootstrap/js/dropdown.js
+scripts[] = bootstrap/js/modal.js
+scripts[] = bootstrap/js/tooltip.js
+scripts[] = bootstrap/js/popover.js
+scripts[] = bootstrap/js/scrollspy.js
+scripts[] = bootstrap/js/tab.js
+scripts[] = bootstrap/js/transition.js
+
+; ========================================
+; Pixelgarage Scripts
+; ========================================
+scripts[] = js/pxlTest.js
+scripts[] = js/pxlBehaviors.js
+scripts[] = js/smartmenu/jquery.smartmenus.js
+scripts[] = js/smartmenu/jquery.smartmenus.bootstrap.js
+
+; ========================================
+; Pixelgarage Breakpoints (first match from top is taken => no stacked breakpoints needed)
+; ========================================
+breakpoints[wide] 	   = only screen and (min-width:75em)
+multipliers[wide][]    = 2x
+breakpoints[desktop]   = only screen and (min-width:62em)
+multipliers[desktop][] = 2x
+breakpoints[tablet]    = only screen and (min-width:48em)
+multipliers[tablet][]  = 2x
+breakpoints[narrow]    = only screen and (min-width:30em)
+multipliers[narrow][]  = 2x
+breakpoints[mobile]    = only screen and (min-width:0em)
+multipliers[mobile][]  = 2x
+
+; ========================================
+; Settings
+; ========================================
+settings[bootstrap_cdn] = ""

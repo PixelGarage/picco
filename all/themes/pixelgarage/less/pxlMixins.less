@@ -1,0 +1,59 @@
+/* --------------------------------------------------
+ * Pixelgarage Mixins library
+ *
+ * Usage:
+ * .class {
+ *     #pxl-mixins.mixin;
+ * }
+ *
+ * --------------------------------------------------*/
+
+#pxl-mixins {
+  //
+  // To prevent the mixins without parameter to be output into the css-file, use () in definition
+  //
+  .no-list-style() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .border-radius(@radius: 0) {
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+  }
+
+  // centers an element vertically in its container (block with height)
+  .center-vertically {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  // aligns an element vertically in its container (block with height)
+  .align-vertically(@y) {
+    position: relative;
+    top: @y;
+    -webkit-transform: translateY(-@y);
+    -ms-transform: translateY(-@y);
+    transform: translateY(-@y);
+  }
+
+  // Drop shadows.
+  .box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+    box-shadow: @shadow;
+  }
+
+  // Box sizing.
+  .box-sizing(@size) {
+    -webkit-box-sizing: @size;
+    -moz-box-sizing: @size;
+    box-sizing: @size;
+  }
+
+}
+

@@ -1,0 +1,24 @@
+Specific Project Details:
+
+Changes in Modules (Patches)
+============================
+1)
+
+
+Locked Modules (no update)
+===================
+1)
+
+
+
+Security settings Going LIVE
+============================
+1) Run security review (fix reported security threads)
+    a) Get help about site_audit specific commands
+    drush help --filter=site_audit
+
+    b) Start a report and save it as html
+    drush aa --html --bootstrap --detail --skip=insights > ~/Desktop/report.html
+
+2) Setup aes security (use key in db)
+3) DB and files backup only with encryption (see Backup and migrate)

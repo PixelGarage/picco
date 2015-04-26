@@ -1,0 +1,100 @@
+/*
+ *  ShareThis component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@ss-font-path: "@{pxl-font-path}/ss-social";
+@ss-sub-font: "Circle"; // supported sub-fonts are "Circle" and "Regular"
+
+
+// Social icon Fonts
+// -------------------------
+@font-face {
+  font-family: "SSSocial-Circle";
+  src: url('@{ss-font-path}/ss-social-circle.eot');
+  src: url('@{ss-font-path}/ss-social-circle.eot?#iefix') format('embedded-opentype'),
+  url('@{ss-font-path}/ss-social-circle.woff') format('woff'),
+  url('@{ss-font-path}/ss-social-circle.ttf') format('truetype'),
+  url('@{ss-font-path}/ss-social-circle.svg#SSSocialCircle') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SSSocial-Regular";
+  src: url('@{ss-font-path}/ss-social-regular.eot');
+  src: url('@{ss-font-path}/ss-social-regular.eot?#iefix') format('embedded-opentype'),
+  url('@{ss-font-path}/ss-social-regular.woff') format('woff'),
+  url('@{ss-font-path}/ss-social-regular.ttf') format('truetype'),
+  url('@{ss-font-path}/ss-social-regular.svg#SSSocialRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// Mixins
+// -------------------------
+.ss-social(@sub-font) {
+  font-family: "SSSocial-@{sub-font}";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+// General settings
+// -------------------------
+.block-sharethis .block-inner {
+  margin: 0;
+}
+.sharethis-wrapper {
+  margin: 0;
+  text-align: left;
+
+  > span .stButton {
+    margin: 0;
+
+    .stLarge {
+      .ss-social("Regular");
+      background-image: none !important;
+      font-size: 2em;
+      color: #888;
+      height: 1.2em;
+
+      &:hover {
+        color: #333;
+      }
+
+      &:before {
+        display: inline-block;
+        padding: 0.25em 0 0;
+      }
+
+    }
+  }
+}
+
+/* Large social buttons */
+.st_facebook_large .stButton .stLarge:before {
+  content: "\f610";
+}
+.st_twitter_large .stButton .stLarge:before {
+  content: "\f611";
+}
+.st_googleplus_large .stButton .stLarge:before {
+  content: "\f613";
+}
+.st_email_large .stButton .stLarge:before {
+  content: "✉";
+}
+.st_pinterest_large .stButton .stLarge:before {
+  content: "\f650";
+}

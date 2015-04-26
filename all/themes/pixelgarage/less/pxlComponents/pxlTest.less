@@ -1,0 +1,60 @@
+/*
+ *  pxlTest component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+/* Resize icon to navbar dimensions */
+.navbar-header {
+  .logo {
+    img {
+      max-height: @navbar-height - 18px;
+    }
+
+  }
+}
+
+/* PxlTest content type */
+.view-pxltest {
+  .views-row {
+    .node-pxltest {
+      margin: 50px 0 20px;
+    }
+
+    border-bottom: 1px solid @gray-lighter;
+  }
+}
+
+/* View mode switcher */
+.switch-view-mode-field {
+  > span {
+    display: block;
+    float: right;
+    padding: @nav-link-padding;
+    color: @state-info-text;
+    border-radius: @nav-pills-border-radius;
+    border: 1px solid @gray-lighter;
+
+    // Links rendered as pills
+    > a {
+      display: block;
+      color: @nav-disabled-link-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    + span {
+      margin-right: 5px;
+    }
+  }
+}

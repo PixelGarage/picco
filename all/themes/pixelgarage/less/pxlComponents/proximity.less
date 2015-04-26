@@ -1,0 +1,261 @@
+/*
+ *  Proximity component
+ *  (see proximity view style module for implementation)
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@pe-bg-color: rgba(255,255,255,0.9);
+@pe-text-color: @gray;
+@pe-link-color: @gray-dark;
+@pe-link-color-hover: @gray-light;
+
+
+// Mixins
+// -------------------------
+//
+// wysiwyg body
+.wysiwyg-body(@link-color) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: @pxl-text-font-bold;
+    font-size: 16px;
+  }
+  h1, h2 {
+    font-size: 18px;
+  }
+
+  p, tbody td {
+    font-family: @pxl-text-font;
+    font-size: 16px;
+  }
+
+  pre, address {
+    font-family: @pxl-text-font-italics;
+    font-size: 16px;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 2px dashed @link-color;
+    background: none;
+  }
+
+  img, embed, video, audio, iframe {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+//
+// specific proximity item
+.specific-pe-item(@x; @y; @w: 10vw; @h: auto) {
+  /* specific proximity event item */
+  top: @y;
+  left: @x;
+  width: auto !important;
+
+  a {
+    &.btn {
+      vertical-align: top;
+    }
+    &.btn:active,
+    &.btn.active {
+      box-shadow: none;
+    }
+
+    .views-field-field-image {
+      display: inline-block;
+      width: @w;
+      height: @h;
+    }
+
+  }
+}
+
+
+// General settings
+// -------------------------
+.pe-container {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 10%;
+  overflow: hidden;
+  margin: 0 auto;
+  /* defines view height as ratio of width */
+  padding-bottom: 56.25%;
+  width: 90%;
+  height: 0;
+
+  @media @portrait {
+    padding-bottom: 0;
+    height: auto;
+    bottom: 0; // stretches container height to window height
+  }
+
+  .pe-background-image {
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    &:before {
+      /* adds a transparent colored filter mask to the cover image */
+      display: none;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(192,192,192, 0.2);
+    }
+  }
+
+  .pe-item {
+    #pxl-mixins.box-sizing(border-box);
+    display: inline-block;
+    position: absolute;
+    margin: 0;
+
+    .pe-item-inner {
+      position: relative;
+    }
+
+    // specific pe-items
+    &.pe-item-0 {  /* Agenda */
+      .specific-pe-item(40%, 58%, 24vw);
+    }
+    &.pe-item-1 { /* Menu card */
+      .specific-pe-item(65%, 64%, 20vw);
+    }
+    &.pe-item-2 { /* About us */
+      .specific-pe-item(65%, 55%, 8vw);
+    }
+    &.pe-item-3 { /* Social links */
+      .specific-pe-item(70%, 45%, 6vw);
+    }
+    &.pe-item-4 { /* Kontakt */
+      .specific-pe-item(68%, 41%, 8vw);
+    }
+
+    @media @tablet {
+      // specific pe-items
+      &.pe-item-0 {  /* Agenda */
+        .specific-pe-item(58%, 58%, 12vw);
+      }
+
+      &.pe-item-1 { /* Menu card */
+        .specific-pe-item(70%, 66%, 10vw);
+      }
+
+      &.pe-item-2 { /* About us */
+        .specific-pe-item(75%, 56%, 4vw);
+      }
+
+      &.pe-item-3 { /* Social links */
+        .specific-pe-item(76%, 40%, 3vw);
+      }
+    }
+
+  }
+
+  #pe-modal-dialog {
+    .modal-backdrop {
+      background-color: transparent;
+    }
+
+    .modal-dialog {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      margin: 0 ;
+      width: 90%;
+
+      @media @tablet {
+        top: 40%;
+        left: 10%;
+        width: 50%;
+      }
+
+      .modal-content {
+        min-height: 60%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: @pe-bg-color;
+
+        .modal-header {
+          width: 100%;
+          border: none;
+
+          .modal-title {
+            font-family: @pxl-title-font;
+            font-size: 18px;
+          }
+
+          button.close {
+            margin-top: -10px;
+            font-family: @font-family-sans-serif;
+            font-size: 30px;
+            font-weight: 100;
+            color: @pe-link-color;
+            text-shadow: none;
+
+            &:hover {
+              color: @pe-link-color-hover;
+            }
+          }
+        }
+
+        .modal-body {
+          padding: 20px;
+          font-size: 16px;
+
+          a {
+            font-family: @pxl-text-font;
+            color: @pe-link-color;
+            outline: none;
+
+            &:hover {
+              color: @pe-link-color-hover;
+              outline: none;
+            }
+          }
+
+          .field-name-field-date {
+
+          }
+
+          .field-name-field-picco-format {
+
+          }
+
+          .field-name-field-flyer {
+            img {
+              width: 100%;
+              max-width: 100%;
+              height:auto;
+            }
+          }
+
+          .field-name-body {
+            .wysiwyg-body(@pe-link-color);
+          }
+
+        }
+
+        .modal-footer {
+          display: block;
+          width: 80%;
+          margin: 0 auto;
+          border-top: 1px solid @pe-link-color;
+        }
+      }
+
+    }
+  }
+
+}
+

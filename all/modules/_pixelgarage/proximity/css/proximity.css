@@ -1,0 +1,116 @@
+/*
+ *  Proximity widget styling, fully responsive
+ */
+
+.pe-container {
+    display: block;
+    position: relative;
+    overflow: hidden;
+	width: 100%;
+    height: auto;
+	margin: 1.25em auto;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 1em;
+}
+.pe-container .pe-background-image {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 61.8%; /* default, overridden with inline style */
+    z-index: 0;
+}
+
+.pe-container .pe-background-image:before {
+    /* adds a transparent colored filter mask to the cover image */
+    display: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(192,192,192, 0.2);
+}
+
+.pe-container .pe-item {
+    display: inline-block;
+    position: static;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+.pe-container .pe-item .pe-item-inner {
+    position: relative;
+}
+
+.pe-container .pe-item a {
+    margin: 0;
+    outline: 0;
+}
+.pe-container .pe-item img {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pe-container .pe-item-description {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+	width: 200px;
+	height: 90px;
+	background: rgba(0,0,0,0.8);
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 100%;
+    text-align: left;
+    line-height: 1;
+	color: white;
+	z-index: 10;
+}
+
+.pe-container .pe-item-description h3 {
+    font-family: inherit;
+    font-size: 0.875em;
+    margin: 0;
+    padding: 0.625em 0.625em 0 0.625em;
+}
+.pe-container .pe-item-description p {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 0.875em;
+    font-style: italic;
+    line-height: 1;
+    padding: 0.625em 0;
+    margin: 0.625em;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+
+/*
+ *  Media dependant styling
+ */
+@media only screen and (min-width: 480px) {
+    /* iPhone landscape or smaller */
+    .pe-container {
+        width: 100%;
+    }
+
+    .pe-container .pe-background-image {
+    }
+
+    .pe-container .pe-item {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10%;
+        height: 10%;
+        margin: 0;
+    }
+
+    .pe-container .pe-item-description {
+        font-size: 100%;
+    }
+
+}

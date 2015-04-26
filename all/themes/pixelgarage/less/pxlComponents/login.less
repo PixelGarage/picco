@@ -1,0 +1,170 @@
+/*
+ *  Login form component
+ *  (see inc/login.inc for login form alteration)
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+@pxl-login-blue: #2698f2;
+@pxl-login-dark-blue: darken(@pxl-login-blue, 20%);
+@pxl-login-red: #a70014;
+@pxl-login-dark-red: darken(@pxl-login-red, 20%);
+
+
+// Mixins
+// -------------------------
+.reset-form() {
+  clear: both;
+  float: none;
+  width: auto;
+}
+
+// General settings
+// -------------------------
+#user_register_form,
+#user_login_form,
+#user-create-account,
+#user_pass_form {
+  .reset-form;
+}
+
+.page-user-login {
+  .btn {
+    &:extend(.btn-lg);
+    border: none;
+    color: #fff;
+    #pxl-mixins.border-radius(0.25em);
+    #gradient.vertical(@pxl-login-red, @pxl-login-dark-red);
+
+    &:hover {
+      #gradient.vertical(@pxl-login-dark-red, @pxl-login-red);
+      text-decoration: none;
+    }
+  }
+}
+
+/* User login page */
+form#user-login {
+  position: relative;
+  padding: 2em;
+  border: none;
+}
+#user-create-account {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 0 2em;
+  width: 100%;
+
+  .form-actions-wrapper {
+    position: relative;
+    padding: 1em 0 0;
+  }
+
+  .login-register {
+    &:extend(.page-user-login .btn);
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    vertical-align: middle;
+    margin: 0;
+
+    &:hover {
+      &:extend(.page-user-login .btn:hover);
+    }
+  }
+
+  @media screen and (min-width: @screen-md-min) {
+    padding: 2em;
+    width: 50%;
+  }
+}
+#user_login_form {
+  &:extend(#user-create-account);
+  border: 0;
+  border-bottom: 1px solid @hr-border;
+
+  .form-actions-wrapper {
+    position: relative;
+    padding: 1em 0 0;
+
+    .form-actions {
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      vertical-align: middle;
+      margin: 0;
+    }
+  }
+
+  .btn {
+    #gradient.vertical(@pxl-login-blue, @pxl-login-dark-blue);
+
+    &:hover {
+      #gradient.vertical(@pxl-login-dark-blue, @pxl-login-blue);
+    }
+  }
+
+  .login-password {
+    display: inline-block;
+    margin:  0.5em 0;
+    color: @pxl-login-blue;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media screen and (min-width: @screen-md-min) {
+    border: 0;
+    border-right: 1px solid @hr-border;
+  }
+}
+
+
+/* User register / password pages */
+#user-register-form,
+#user-pass {
+  display: inline-block;
+  max-width: 40em;
+  vertical-align: top;
+  margin: 1em 0;
+
+  .form-actions {
+    margin-top: 2em;
+
+    .back-to-login {
+      float: left;
+      margin: 0;
+
+      .login-account {
+        display: inline-block;
+        margin-top:  0.5em;
+        color: @pxl-login-blue;
+
+        &:hover {
+          color: @pxl-login-blue;
+          text-decoration: underline;
+        }
+      }
+
+      &:before {
+        display: inline;
+        font-family: "fontawesome";
+        content: '\f112';
+        color: @pxl-login-blue;
+        text-align: center;
+        padding: 0.3em;
+      }
+    }
+
+    .btn {
+      &:extend(.page-user-login .btn);
+      float: right;
+
+      &:hover {
+        &:extend(.page-user-login .btn:hover);
+      }
+    }
+  }
+}
+
