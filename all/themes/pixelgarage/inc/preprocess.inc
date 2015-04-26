@@ -24,7 +24,7 @@ function pixelgarage_preprocess_page(&$vars) {
   pg_login_preprocess_page($vars);
 
   // background video in different formats
-  $video_path = drupal_realpath('public://') . '/videos';
+  $video_path = file_create_url('public://') . '/videos';
   $image_path = drupal_get_path('theme', 'pixelgarage') . '/images';
   $vars['poster_img'] = $image_path . '/picco.jpg';
   $vars['webM_video'] = $video_path . '/picco.webm';
