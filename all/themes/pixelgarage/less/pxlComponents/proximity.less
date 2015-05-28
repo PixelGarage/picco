@@ -49,14 +49,15 @@
 
 //
 // specific proximity item
-.specific-pe-item(@x; @y; @w: 10vw; @h: auto) {
+.specific-pe-item(@x; @y; @w: auto; @h: auto) {
   /* specific proximity event item */
   top: @y;
-  left: @x;
+  right: @x;
   width: auto !important;
 
   a {
     &.btn {
+      padding: 0;
       vertical-align: top;
     }
     &.btn:active,
@@ -80,19 +81,10 @@
   display: block;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 10%;
+  right: 0;
   overflow: hidden;
-  margin: 0 auto;
-  /* defines view height as ratio of width */
-  padding-bottom: 56.25%;
-  width: 90%;
-  height: 0;
-
-  @media @portrait {
-    padding-bottom: 0;
-    height: auto;
-    bottom: 0; // stretches container height to window height
-  }
 
   .pe-background-image {
     display: none;
@@ -125,37 +117,40 @@
 
     // specific pe-items
     &.pe-item-0 {  /* Agenda */
-      .specific-pe-item(40%, 58%, 24vw);
+      .specific-pe-item(28%, 60%, 100px);
     }
     &.pe-item-1 { /* Menu card */
-      .specific-pe-item(65%, 64%, 20vw);
+      .specific-pe-item(12%, 65%, 70px);
     }
     &.pe-item-2 { /* About us */
-      .specific-pe-item(65%, 55%, 8vw);
+      .specific-pe-item(14%, 42%, 30px);
     }
     &.pe-item-3 { /* Social links */
-      .specific-pe-item(70%, 45%, 6vw);
+      .specific-pe-item(8%, 30%, 24px);
     }
     &.pe-item-4 { /* Kontakt */
-      .specific-pe-item(68%, 41%, 8vw);
+      .specific-pe-item(20%, 36%, 42px);
     }
 
     @media @tablet {
       // specific pe-items
       &.pe-item-0 {  /* Agenda */
-        .specific-pe-item(58%, 58%, 12vw);
+        .specific-pe-item(28%, 60%, 140px);
       }
 
       &.pe-item-1 { /* Menu card */
-        .specific-pe-item(70%, 66%, 10vw);
+        .specific-pe-item(17%, 70%, 100px);
       }
 
       &.pe-item-2 { /* About us */
-        .specific-pe-item(75%, 56%, 4vw);
+        .specific-pe-item(18%, 60%, 40px);
       }
 
       &.pe-item-3 { /* Social links */
-        .specific-pe-item(76%, 40%, 3vw);
+        .specific-pe-item(20%, 48%, 25px);
+      }
+      &.pe-item-4 { /* Kontakt */
+        .specific-pe-item(23%, 52%, 60px);
       }
     }
 
@@ -168,19 +163,20 @@
 
     .modal-dialog {
       position: absolute;
-      top: 5%;
       left: 5%;
+      bottom: 0;
       margin: 0 ;
       width: 90%;
+      max-height: 90vh;
 
       @media @tablet {
-        top: 40%;
         left: 10%;
         width: 50%;
+        max-height: 60vh;
       }
 
       .modal-content {
-        min-height: 60%;
+        height: 100%;
         border: none;
         border-radius: 0;
         box-shadow: none;

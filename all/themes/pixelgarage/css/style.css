@@ -8728,20 +8728,39 @@ html {
 }
 body {
   height: 100%;
-  background: #000000 none;
 }
 body header.navbar {
   display: none;
+}
+body #background-wrapper {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body #background-wrapper img.bg-img {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+body #background-wrapper img.bg-img.bg-img1 {
+  display: block;
 }
 body.admin-menu #video-wrapper {
   margin-top: 29px !important;
 }
 body #video-wrapper {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
 body #video-wrapper video#picco-video {
   display: block;
@@ -8749,22 +8768,20 @@ body #video-wrapper video#picco-video {
   min-width: 100%;
   min-height: 100%;
   outline: none;
-  background: url("../images/picco.jpg") no-repeat fixed;
-  background-size: cover;
   transition: 1s opacity;
   opacity: 1;
-  z-index: -100;
+  z-index: -99;
 }
 body #video-wrapper video#picco-video.fadeout {
-  opacity: 0.5;
+  opacity: 0.6;
 }
-body #video-wrapper #controls {
+body #video-wrapper #video-controls {
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 10;
 }
-body #video-wrapper #controls button#playpause {
+body #video-wrapper #video-controls button#playpause {
   display: inline-block;
   color: #ffffff;
   font-size: 1em;
@@ -8772,17 +8789,55 @@ body #video-wrapper #controls button#playpause {
   outline: none;
   background: none;
 }
+body #audio-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+}
+body #audio-wrapper #audio-controls {
+  cursor: pointer;
+}
+body #audio-wrapper #audio-controls .beat-title {
+  display: inline-block;
+  font-family: 'LauraWorthingtonCharcuterieSansBold';
+  font-size: 14px;
+  color: #ffffff;
+}
+body #audio-wrapper #audio-controls button#toggle-audio {
+  display: inline-block;
+  max-width: 50px;
+  border: none;
+  outline: none;
+  background: none;
+}
+body #audio-wrapper #audio-controls button#toggle-audio img {
+  max-width: 100%;
+  height: auto;
+}
+body #logo-wrapper {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+body #logo-wrapper img.logo {
+  display: inline-block;
+  width: 25%;
+  min-width: 280px;
+}
 body .footer {
   display: none;
 }
-@media screen and (orientation: portrait) {
-  body {
-    background: #000000 url("../images/picco.jpg") no-repeat fixed;
-    background-size: cover;
-    z-index: -100;
+@media screen and (min-width: 480px) {
+  body #background-wrapper {
+    display: none;
   }
   body #video-wrapper {
-    display: none;
+    display: block;
   }
 }
 /*
@@ -8793,20 +8848,10 @@ body .footer {
   display: block;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 10%;
+  right: 0;
   overflow: hidden;
-  margin: 0 auto;
-  /* defines view height as ratio of width */
-  padding-bottom: 56.25%;
-  width: 90%;
-  height: 0;
-}
-@media screen and (orientation: portrait) {
-  .pe-container {
-    padding-bottom: 0;
-    height: auto;
-    bottom: 0;
-  }
 }
 .pe-container .pe-background-image {
   display: none;
@@ -8839,11 +8884,12 @@ body .footer {
 .pe-container .pe-item.pe-item-0 {
   /* Agenda */
   /* specific proximity event item */
-  top: 58%;
-  left: 40%;
+  top: 60%;
+  right: 28%;
   width: auto !important;
 }
 .pe-container .pe-item.pe-item-0 a.btn {
+  padding: 0;
   vertical-align: top;
 }
 .pe-container .pe-item.pe-item-0 a.btn:active,
@@ -8852,17 +8898,18 @@ body .footer {
 }
 .pe-container .pe-item.pe-item-0 a .views-field-field-image {
   display: inline-block;
-  width: 24vw;
+  width: 100px;
   height: auto;
 }
 .pe-container .pe-item.pe-item-1 {
   /* Menu card */
   /* specific proximity event item */
-  top: 64%;
-  left: 65%;
+  top: 65%;
+  right: 12%;
   width: auto !important;
 }
 .pe-container .pe-item.pe-item-1 a.btn {
+  padding: 0;
   vertical-align: top;
 }
 .pe-container .pe-item.pe-item-1 a.btn:active,
@@ -8871,17 +8918,18 @@ body .footer {
 }
 .pe-container .pe-item.pe-item-1 a .views-field-field-image {
   display: inline-block;
-  width: 20vw;
+  width: 70px;
   height: auto;
 }
 .pe-container .pe-item.pe-item-2 {
   /* About us */
   /* specific proximity event item */
-  top: 55%;
-  left: 65%;
+  top: 42%;
+  right: 14%;
   width: auto !important;
 }
 .pe-container .pe-item.pe-item-2 a.btn {
+  padding: 0;
   vertical-align: top;
 }
 .pe-container .pe-item.pe-item-2 a.btn:active,
@@ -8890,17 +8938,18 @@ body .footer {
 }
 .pe-container .pe-item.pe-item-2 a .views-field-field-image {
   display: inline-block;
-  width: 8vw;
+  width: 30px;
   height: auto;
 }
 .pe-container .pe-item.pe-item-3 {
   /* Social links */
   /* specific proximity event item */
-  top: 45%;
-  left: 70%;
+  top: 30%;
+  right: 8%;
   width: auto !important;
 }
 .pe-container .pe-item.pe-item-3 a.btn {
+  padding: 0;
   vertical-align: top;
 }
 .pe-container .pe-item.pe-item-3 a.btn:active,
@@ -8909,17 +8958,18 @@ body .footer {
 }
 .pe-container .pe-item.pe-item-3 a .views-field-field-image {
   display: inline-block;
-  width: 6vw;
+  width: 24px;
   height: auto;
 }
 .pe-container .pe-item.pe-item-4 {
   /* Kontakt */
   /* specific proximity event item */
-  top: 41%;
-  left: 68%;
+  top: 36%;
+  right: 20%;
   width: auto !important;
 }
 .pe-container .pe-item.pe-item-4 a.btn {
+  padding: 0;
   vertical-align: top;
 }
 .pe-container .pe-item.pe-item-4 a.btn:active,
@@ -8928,18 +8978,19 @@ body .footer {
 }
 .pe-container .pe-item.pe-item-4 a .views-field-field-image {
   display: inline-block;
-  width: 8vw;
+  width: 42px;
   height: auto;
 }
 @media screen and (min-width: 768px) {
   .pe-container .pe-item.pe-item-0 {
     /* Agenda */
     /* specific proximity event item */
-    top: 58%;
-    left: 58%;
+    top: 60%;
+    right: 28%;
     width: auto !important;
   }
   .pe-container .pe-item.pe-item-0 a.btn {
+    padding: 0;
     vertical-align: top;
   }
   .pe-container .pe-item.pe-item-0 a.btn:active,
@@ -8948,17 +8999,18 @@ body .footer {
   }
   .pe-container .pe-item.pe-item-0 a .views-field-field-image {
     display: inline-block;
-    width: 12vw;
+    width: 140px;
     height: auto;
   }
   .pe-container .pe-item.pe-item-1 {
     /* Menu card */
     /* specific proximity event item */
-    top: 66%;
-    left: 70%;
+    top: 70%;
+    right: 17%;
     width: auto !important;
   }
   .pe-container .pe-item.pe-item-1 a.btn {
+    padding: 0;
     vertical-align: top;
   }
   .pe-container .pe-item.pe-item-1 a.btn:active,
@@ -8967,17 +9019,18 @@ body .footer {
   }
   .pe-container .pe-item.pe-item-1 a .views-field-field-image {
     display: inline-block;
-    width: 10vw;
+    width: 100px;
     height: auto;
   }
   .pe-container .pe-item.pe-item-2 {
     /* About us */
     /* specific proximity event item */
-    top: 56%;
-    left: 75%;
+    top: 60%;
+    right: 18%;
     width: auto !important;
   }
   .pe-container .pe-item.pe-item-2 a.btn {
+    padding: 0;
     vertical-align: top;
   }
   .pe-container .pe-item.pe-item-2 a.btn:active,
@@ -8986,17 +9039,18 @@ body .footer {
   }
   .pe-container .pe-item.pe-item-2 a .views-field-field-image {
     display: inline-block;
-    width: 4vw;
+    width: 40px;
     height: auto;
   }
   .pe-container .pe-item.pe-item-3 {
     /* Social links */
     /* specific proximity event item */
-    top: 40%;
-    left: 76%;
+    top: 48%;
+    right: 20%;
     width: auto !important;
   }
   .pe-container .pe-item.pe-item-3 a.btn {
+    padding: 0;
     vertical-align: top;
   }
   .pe-container .pe-item.pe-item-3 a.btn:active,
@@ -9005,7 +9059,27 @@ body .footer {
   }
   .pe-container .pe-item.pe-item-3 a .views-field-field-image {
     display: inline-block;
-    width: 3vw;
+    width: 25px;
+    height: auto;
+  }
+  .pe-container .pe-item.pe-item-4 {
+    /* Kontakt */
+    /* specific proximity event item */
+    top: 52%;
+    right: 23%;
+    width: auto !important;
+  }
+  .pe-container .pe-item.pe-item-4 a.btn {
+    padding: 0;
+    vertical-align: top;
+  }
+  .pe-container .pe-item.pe-item-4 a.btn:active,
+  .pe-container .pe-item.pe-item-4 a.btn.active {
+    box-shadow: none;
+  }
+  .pe-container .pe-item.pe-item-4 a .views-field-field-image {
+    display: inline-block;
+    width: 60px;
     height: auto;
   }
 }
@@ -9014,20 +9088,21 @@ body .footer {
 }
 .pe-container #pe-modal-dialog .modal-dialog {
   position: absolute;
-  top: 5%;
   left: 5%;
+  bottom: 0;
   margin: 0 ;
   width: 90%;
+  max-height: 90vh;
 }
 @media screen and (min-width: 768px) {
   .pe-container #pe-modal-dialog .modal-dialog {
-    top: 40%;
     left: 10%;
     width: 50%;
+    max-height: 60vh;
   }
 }
 .pe-container #pe-modal-dialog .modal-dialog .modal-content {
-  min-height: 60%;
+  height: 100%;
   border: none;
   border-radius: 0;
   box-shadow: none;

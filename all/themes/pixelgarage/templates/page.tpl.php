@@ -112,20 +112,44 @@
 </header>
 
 <!-- background video -->
+<div id="background-wrapper">
+  <img class="bg-img bg-img1" src="<?php print $img_001; ?>">
+  <img class="bg-img bg-img2" src="<?php print $img_002; ?>">
+  <img class="bg-img bg-img3" src="<?php print $img_003; ?>">
+  <img class="bg-img bg-img4" src="<?php print $img_004; ?>">
+</div>
+
+<!-- background video -->
 <div id="video-wrapper">
-  <video id="picco-video" title="Piccolo Giardino" controls="controls" autoplay="autoplay" loop="loop" muted="muted" preload="auto" poster="<?php print $poster_img; ?>" onended="var v=this;setTimeout(function(){v.play()},300)">
+  <video id="picco-video" title="Piccolo Giardino" autoplay="autoplay" loop="loop" muted="muted" preload="auto" poster="<?php print $poster_img; ?>" onended="var v=this;setTimeout(function(){v.play()},300)">
     <?php if (!empty($webM_video)): ?><source src="<?php print $webM_video; ?>" type="video/webm" /><?php endif; ?>
-    <?php if (!empty($m4v_video)): ?><source src="<?php print $m4v_video; ?>" type="video/mp4" /><?php endif; ?>
-    <?php if (!empty($ogg_video)): ?><source src="<?php print $ogg_video; ?>" type="video/ogg" /><?php endif; ?>
     <?php if (!empty($mp4_video)): ?><source src="<?php print $mp4_video; ?>" type="video/mp4" /><?php endif; ?>
   </video>
-  <div id="controls">
+  <div id="video-controls">
     <button id="playpause" title="play"><i class="fa fa-pause"></i></button>
   </div>
 </div>
 
-<div class="main-container container">
+<!-- background audio -->
+<?php if (!empty($beat_src)): ?>
+  <div id="audio-wrapper">
+    <audio id="picco-audio" title="Piccolo Giardino beat" src="<?php print $beat_src; ?>" preload="auto">
+    </audio>
+    <div id="audio-controls">
+      <button id="toggle-audio" title="play"><img class="audio-play" src="<?php print $beat_icon_src; ?>"></button>
+      <div class="beat-title"><?php print $beat_title; ?></div>
+    </div>
+  </div>
+<?php endif; ?>
 
+<!-- picco logo -->
+<?php if (!empty($picco_logo)): ?>
+  <div id="logo-wrapper">
+    <img class="logo picco-logo" src="<?php print $picco_logo; ?>">
+  </div>
+<?php endif; ?>
+
+<div class="main-container container">
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>

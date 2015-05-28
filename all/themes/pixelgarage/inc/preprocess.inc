@@ -23,14 +23,37 @@ function pixelgarage_preprocess_page(&$vars) {
   // hide titles on login forms
   pg_login_preprocess_page($vars);
 
-  // background video in different formats
+  // background audio
+  $beat_uri = null;
+  $icon_uri = null;
+  $beat_title = '';
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'PiccoBeat')
+    ->range(0, 1);
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    // get audio file path and icon
+    $node = node_load(key($result['node']));
+    $beat_uri = $node->field_beat_file[LANGUAGE_NONE][0]['uri'];
+    $icon_uri = $node->field_image[LANGUAGE_NONE][0]['uri'];
+    $beat_title = $node->title;
+  }
+
+
+    // background video in different formats
   $video_path = file_create_url('public://') . '/videos';
   $image_path = drupal_get_path('theme', 'pixelgarage') . '/images';
-  $vars['poster_img'] = $image_path . '/picco.jpg';
-  $vars['webM_video'] = $video_path . '/picco.webm';
-  $vars['m4v_video'] = $video_path . '/picco.m4v';
-  $vars['ogg_video'] = $video_path . '/picco.ogv';
-  $vars['mp4_video'] = $video_path . '/picco.mp4';
-
+  $vars['poster_img'] = $image_path . '/Picco001.jpg';
+  $vars['webM_video'] = $video_path . '/Picco.webm';
+  $vars['mp4_video'] = $video_path . '/Picco.mp4';
+  $vars['beat_src'] = !empty($beat_uri) ? file_create_url($beat_uri) : null;
+  $vars['beat_icon_src'] = !empty($icon_uri) ? file_create_url($icon_uri) : null;
+  $vars['beat_title'] = $beat_title;
+  $vars['picco_logo'] = $image_path . '/picco_logo.png';
+  $vars['img_001'] = $image_path . '/Picco001.jpg';
+  $vars['img_002'] = $image_path . '/Picco002.jpg';
+  $vars['img_003'] = $image_path . '/Picco003.jpg';
+  $vars['img_004'] = $image_path . '/Picco004.jpg';
 }
 

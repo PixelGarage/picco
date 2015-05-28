@@ -46,7 +46,7 @@
                 });
             });
 
-            // modal dialog showing / hiding
+            // play/pause video on hiding/showing modal dialog
             $peDialog.once('events', function () {
                 var isPaused = true;
 
@@ -66,5 +66,47 @@
 
         }
     };
+
+    Drupal.behaviors.audioController = {
+        attach: function () {
+            var audio = document.getElementById('picco-audio'),
+                $controls = $(document).find('div#audio-controls');
+
+            // click on play / pause button
+            $controls.once('click', function () {
+                $controls.on('click', function () {
+                    // toggle the play button
+                    if (audio.paused || audio.ended) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    }
+
+                    // don't propagate click event further up
+                    return false;
+                });
+            });
+
+        }
+    }
+
+    Drupal.behaviors.backgroundImage = {
+        attach: function () {
+            // set interval for background image exchange
+            var index = 1;
+
+            setInterval(function() {
+                var nextIndex = (index%4)+1;
+
+                // display next background image in queue (animated)
+                var selActive = '#background-wrapper .bg-img' + index,
+                    selNext = '#background-wrapper .bg-img' + nextIndex;
+                $(selNext).fadeIn(600);
+                $(selActive).fadeOut(600);
+                index = nextIndex;
+
+            }, 7000);
+        }
+    }
 
 })(jQuery);
