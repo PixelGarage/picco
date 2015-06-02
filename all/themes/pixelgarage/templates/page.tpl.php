@@ -131,16 +131,17 @@
 </div>
 
 <!-- background audio -->
-<?php if (!empty($beat_src)): ?>
-  <div id="audio-wrapper">
-    <audio id="picco-audio" title="Piccolo Giardino beat" src="<?php print $beat_src; ?>" preload="auto">
-    </audio>
-    <div id="audio-controls">
-      <button id="toggle-audio" title="play"><img class="audio-play" src="<?php print $beat_icon_src; ?>"></button>
-      <div class="beat-title"><?php print $beat_title; ?></div>
-    </div>
+<div id="audio-wrapper">
+  <audio id="picco-audio" title="Piccolo Giardino beat" preload="auto">
+    <?php if (!empty($beat_mime_0) && !empty($beat_src_0)): ?><source src="<?php print $beat_src_0; ?>" type="<?php print $beat_mime_0; ?>" /><?php endif; ?>
+    <?php if (!empty($beat_mime_1) && !empty($beat_src_1)): ?><source src="<?php print $beat_src_1; ?>" type="<?php print $beat_mime_1; ?>" /><?php endif; ?>
+    <?php if (!empty($beat_mime_2) && !empty($beat_src_2)): ?><source src="<?php print $beat_src_2; ?>" type="<?php print $beat_mime_2; ?>" /><?php endif; ?>
+  </audio>
+  <div id="audio-controls">
+    <button id="toggle-audio" title="play"><img class="audio-play" src="<?php print $beat_icon_src; ?>"></button>
+    <div class="beat-title"><?php print $beat_title; ?></div>
   </div>
-<?php endif; ?>
+</div>
 
 <!-- picco logo -->
 <?php if (!empty($picco_logo)): ?>
