@@ -12,8 +12,13 @@
     Drupal.behaviors.videoController = {
         attach: function () {
             var video = document.getElementById('picco-video'),
-                $playPause = $(document).find('#playpause'),
+                $playPause = $(document).find('#picco-logo'),
                 $peDialog = $('.main-container .pe-container #pe-modal-dialog');
+
+            // PREVENT VIDEO FROM PLAYING ON MOBILES
+            if ($(window).width() < 480) {
+                video.pause();
+            }
 
             // video playing/pause events
             $(video).once('playing', function () {

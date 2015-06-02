@@ -125,9 +125,9 @@
     <?php if (!empty($webM_video)): ?><source src="<?php print $webM_video; ?>" type="video/webm" /><?php endif; ?>
     <?php if (!empty($mp4_video)): ?><source src="<?php print $mp4_video; ?>" type="video/mp4" /><?php endif; ?>
   </video>
-  <div id="video-controls">
+  <!--div id="video-controls">
     <button id="playpause" title="play"><i class="fa fa-pause"></i></button>
-  </div>
+  </div-->
 </div>
 
 <!-- background audio -->
@@ -146,7 +146,7 @@
 <!-- picco logo -->
 <?php if (!empty($picco_logo)): ?>
   <div id="logo-wrapper">
-    <img class="logo picco-logo" src="<?php print $picco_logo; ?>">
+    <img id="picco-logo" class="logo picco-logo fa fa-pause" src="<?php print $picco_logo; ?>">
   </div>
 <?php endif; ?>
 
