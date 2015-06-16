@@ -56,7 +56,7 @@ function pixelgarage_preprocess_page(&$vars) {
 
   // background video in different formats
   $video_path = file_create_url('public://') . '/videos';
-  $image_path = drupal_get_path('theme', 'pixelgarage') . '/images';
+  $image_path = '/' . drupal_get_path('theme', 'pixelgarage') . '/images'; // path relative to document root
   $vars['poster_img'] = $image_path . '/Picco001.jpg';
   $vars['webM_video'] = $video_path . '/Picco.webm';
   $vars['mp4_video'] = $video_path . '/Picco.mp4';
