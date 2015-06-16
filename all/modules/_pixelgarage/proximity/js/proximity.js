@@ -145,10 +145,18 @@
               // attach click event to all proximity items to load dialog content via AJAX
               $items.once('click', function() {
                 $(this).on('click', function(ev) {
+                    // load content via ajax
                     var $button = $(this).find('a.btn'),
                         $target = $('#pe-modal-dialog .modal-body'),
                         param = $button.attr('data-ajax-load-param'),
-                        ajax_url = settings.ajax_url + param;
+                        ajax_url = settings.ajax_url + param,
+                        _setBackdropHeight  = function () {
+                            var contentHeight = $('#pe-modal-dialog .modal-content').height(),
+                                dialogHeight = $('#pe-modal-dialog .modal-dialog').height(),
+                                targetHeight = $target.height(),
+                                totalHeight = $(window).height() + contentHeight - dialogHeight;
+                            $('#pe-modal-dialog .modal-backdrop').css('height', totalHeight);
+                        };
 
                     // set the loading html on the target and load target content via ajax
                     $target.html(settings.ajax_loading);
@@ -160,9 +168,8 @@
                             // make sure all behaviors are attached to new content
                             Drupal.attachBehaviors($target, settings);
 
-                            // adapt backdrop height to full height (dialog overflow)
-                            var overflow = $('#pe-modal-dialog .modal-content').height() - $('#pe-modal-dialog .modal-dialog').height();
-                            $('#pe-modal-dialog .modal-backdrop').css('height', '+=' + overflow);
+                            // set backdrop height according to content height (wait a little to get correct height)
+                            window.setTimeout(_setBackdropHeight, 200);
                         }
                     });
                 });
