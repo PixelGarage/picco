@@ -159,6 +159,10 @@
                         } else {
                             // make sure all behaviors are attached to new content
                             Drupal.attachBehaviors($target, settings);
+
+                            // adapt backdrop height to full height (dialog overflow)
+                            var overflow = $('#pe-modal-dialog .modal-content').height() - $('#pe-modal-dialog .modal-dialog').height();
+                            $('#pe-modal-dialog .modal-backdrop').css('height', '+=' + overflow);
                         }
                     });
                 });

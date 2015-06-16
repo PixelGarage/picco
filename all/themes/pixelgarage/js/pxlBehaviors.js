@@ -60,12 +60,18 @@
                     isPaused = video.paused || video.ended;
                     video.pause();
 
+                    // move logo behind dialog
+                    $playPause.css('z-index', -10);
                 });
                 $peDialog.on('hide.bs.modal', function () {
                     // play video
                     if (!isPaused) {
                         video.play();
                     }
+
+                    // move logo to the front
+                    $playPause.css('z-index', 10);
+
                 });
             });
 
