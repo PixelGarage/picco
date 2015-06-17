@@ -44,4 +44,10 @@
     </div>
   </div>
 
+  <!--
+  Content container (used for page transitions)
+  The content for the body is retrieved via AJAX
+  -->
+  <div id="pe-content-container" class="pe-content-container" role="page"></div>
+
 </div>

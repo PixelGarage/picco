@@ -8902,6 +8902,11 @@ body .footer {
   width: 100px;
   height: auto;
 }
+.pe-container .pe-item.pe-item-0 a .views-field-title {
+  font-size: 18px;
+  color: #fff;
+  opacity: 1;
+}
 .pe-container .pe-item.pe-item-1 {
   /* Menu card */
   /* specific proximity event item */
@@ -8921,6 +8926,11 @@ body .footer {
   display: inline-block;
   width: 70px;
   height: auto;
+}
+.pe-container .pe-item.pe-item-1 a .views-field-title {
+  font-size: 18px;
+  color: #fff;
+  opacity: 1;
 }
 .pe-container .pe-item.pe-item-2 {
   /* About us */
@@ -8942,6 +8952,11 @@ body .footer {
   width: 30px;
   height: auto;
 }
+.pe-container .pe-item.pe-item-2 a .views-field-title {
+  font-size: 18px;
+  color: #fff;
+  opacity: 1;
+}
 .pe-container .pe-item.pe-item-3 {
   /* Social links */
   /* specific proximity event item */
@@ -8962,6 +8977,11 @@ body .footer {
   width: 24px;
   height: auto;
 }
+.pe-container .pe-item.pe-item-3 a .views-field-title {
+  font-size: 18px;
+  color: #fff;
+  opacity: 1;
+}
 .pe-container .pe-item.pe-item-4 {
   /* Kontakt */
   /* specific proximity event item */
@@ -8981,6 +9001,11 @@ body .footer {
   display: inline-block;
   width: 42px;
   height: auto;
+}
+.pe-container .pe-item.pe-item-4 a .views-field-title {
+  font-size: 18px;
+  color: #fff;
+  opacity: 1;
 }
 @media screen and (min-width: 768px) {
   .pe-container .pe-item.pe-item-0 {
@@ -9003,6 +9028,11 @@ body .footer {
     width: 140px;
     height: auto;
   }
+  .pe-container .pe-item.pe-item-0 a .views-field-title {
+    font-size: 18px;
+    color: #fff;
+    opacity: 1;
+  }
   .pe-container .pe-item.pe-item-1 {
     /* Menu card */
     /* specific proximity event item */
@@ -9022,6 +9052,11 @@ body .footer {
     display: inline-block;
     width: 100px;
     height: auto;
+  }
+  .pe-container .pe-item.pe-item-1 a .views-field-title {
+    font-size: 18px;
+    color: #fff;
+    opacity: 1;
   }
   .pe-container .pe-item.pe-item-2 {
     /* About us */
@@ -9043,6 +9078,11 @@ body .footer {
     width: 40px;
     height: auto;
   }
+  .pe-container .pe-item.pe-item-2 a .views-field-title {
+    font-size: 18px;
+    color: #fff;
+    opacity: 1;
+  }
   .pe-container .pe-item.pe-item-3 {
     /* Social links */
     /* specific proximity event item */
@@ -9063,6 +9103,11 @@ body .footer {
     width: 25px;
     height: auto;
   }
+  .pe-container .pe-item.pe-item-3 a .views-field-title {
+    font-size: 18px;
+    color: #fff;
+    opacity: 1;
+  }
   .pe-container .pe-item.pe-item-4 {
     /* Kontakt */
     /* specific proximity event item */
@@ -9082,6 +9127,11 @@ body .footer {
     display: inline-block;
     width: 60px;
     height: auto;
+  }
+  .pe-container .pe-item.pe-item-4 a .views-field-title {
+    font-size: 18px;
+    color: #fff;
+    opacity: 1;
   }
 }
 .pe-container #pe-modal-dialog .modal-backdrop {

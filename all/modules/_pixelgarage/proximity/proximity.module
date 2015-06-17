@@ -125,7 +125,7 @@ function template_preprocess_views_view_proximity(&$vars) {
 
   // add additional proximity options for use in javascript
   $container = '.view-' . drupal_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' .pe-container';
-  $desc_selector = !empty($options['proximity_desc_selector']) ? '.pe-item ' . $options['proximity_desc_selector'] : '';
+  $desc_selector = !empty($options['proximity_desc_selector']) ? $options['proximity_desc_selector'] : '';
   $ajax_url = $base_url . '/proximity_item/get/';
   $img_path = $base_url . '/' . drupal_get_path('module', 'proximity') . '/ajax-loader.gif';
   $ajax_loading = t('<p>Loading content</p></br>');
@@ -135,15 +135,17 @@ function template_preprocess_views_view_proximity(&$vars) {
   $js_settings = array(
     'proximity' => array(
       $container => array(
+        'proximity_content_container' => $options['proximity_content_container'],
         'random_position' => $options['proximity_random_position'],
-        'trans_duration' => $options['proximity_trans_duration'],
+        'random_cell_size' => $options['proximity_random_cell_size'],
+        'item_selector' => '.pe-item ' . $options['proximity_item_selector'],
+        'desc_selector' => $desc_selector,
         'start_scale' => $options['proximity_start_scale'],
         'end_scale' => $options['proximity_end_scale'],
         'start_opacity' => $options['proximity_start_opacity'],
         'end_opacity' => $options['proximity_end_opacity'],
         'extent' => $options['proximity_extent'],
-        'item_selector' => '.pe-item ' . $options['proximity_item_selector'],
-        'desc_selector' => $desc_selector,
+        'trans_duration' => $options['proximity_trans_duration'],
         'ajax_url' => $ajax_url,
         'ajax_loading' => $ajax_loading,
       ),
