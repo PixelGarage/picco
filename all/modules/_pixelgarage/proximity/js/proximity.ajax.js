@@ -49,13 +49,14 @@
             $.each(Drupal.settings.proximity, function (container, settings) {
 
                 var $container  = $(container),
-                    $items = $container.find(settings.item_selector),
+                    $dialog     = $container.find('#pe-modal-dialog'),
+                    $items      = $container.find(settings.item_selector),
                     transDuration = parseInt(settings.trans_duration),
 
                     _calcModalDialogPos = function($item) {
                         // size and position the modal dialog relative to the item position
-                        var $dialog     = $container.find('#pe-modal-dialog .modal-dialog'),
-                            wDialog     = $dialog.width(),
+                        var $innerDialog = $dialog.find('.modal-dialog'),
+                            wDialog     = $innerDialog.width(),
                             iTop        = parseInt($item.css('top')),
                             iLeft       = parseInt($item.css('left')),
                             padding     = 20,
@@ -67,12 +68,11 @@
                                 : iLeft + hShift + wItem;                                 // right of cell
 
                         // position dialog
-                        $dialog.css({'position': 'absolute', 'top': iTop, 'left': leftPos});
+                        $innerDialog.css({'position': 'absolute', 'top': iTop, 'left': leftPos});
                     },
 
                     _setModalBackdropHeight = function() {
-                        var $dialog     = $container.find('#pe-modal-dialog'),
-                            hContent    = $dialog.find('.modal-content').height(),
+                        var hContent    = $dialog.find('.modal-content').height(),
                             hDialog     = $dialog.find('.modal-dialog').height(),
                             hTotal      = $(window).height() + hContent - hDialog;
 
@@ -83,7 +83,7 @@
                     _loadItemContent = function(param) {
                         //
                         // load item specific content in defined container via ajax
-                        var $target = (settings.ajax_container == 'div_cont') ? $('#pe-content-container') : $('#pe-modal-dialog .modal-body'),
+                        var $target = (settings.ajax_container == 'div_cont') ? $container.find('#pe-content-container') : $dialog.find('.modal-body'),
                             ajax_url = settings.ajax_base_url + param;        // specific item ajax link
 
 
@@ -110,7 +110,7 @@
                                     }
 
                                     // show modal dialog
-                                    $('#pe-modal-dialog').fadeIn(transDuration).modal('show');
+                                    $dialog.fadeIn(transDuration).modal('show');
 
                                 }
 
@@ -122,11 +122,10 @@
 
                     };
 
-
-
+                //
                 // open modal dialog, if deep link request occurred
                 if (settings.deep_link_request) {
-                    $('#pe-modal-dialog').fadeIn(transDuration).modal('show');
+                    $dialog.fadeIn(transDuration).modal('show');
 
                 }
 
@@ -148,7 +147,7 @@
                         _loadItemContent(param);
 
                         // prevent default behavior and further bubble/capture of the event
-                        // Remark: This prevents the modal trigger button to be clicked (open dialog when AJAX returns)
+                        // Remark: This prevents the modal trigger button to be clicked (instead open dialog when AJAX returns)
                         return false;
                     });
                 });
