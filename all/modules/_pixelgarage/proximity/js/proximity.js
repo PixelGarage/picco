@@ -15,8 +15,8 @@
      *
      * The following parameters are available in the event handler:
      *
-     * @param event object  The event object with the usual properties.
-     *                      The event.data object contains the following event specific data:
+     * @param event object  The event object with the all event properties.
+     *                      The event.data object contains the following proximity event specific data:
      *                          min                 : defined max. distance (pixels) from item with proximity factor equal 1 (default = 0)
      *                          max                 : outside this defined distance (pixels) the proximity factor is 0 (proximity extent)
      *                          startScale          : starting item scale factor (float) of proximity effect (defined in proximity view settings)
@@ -44,7 +44,7 @@
         if (proximity == 1) {
             // put cell to front
             $item.css( 'z-index', 10 );
-            $descr.fadeIn( 400 );
+            $descr.fadeIn(d.transDuration);
 
         } else {
             // reset cell, stop animation and hide description
@@ -53,7 +53,7 @@
 
         }
 
-        // scale cell and set its transparency
+        // scale item and set its transparency
         $item.css({
             '-webkit-transform'	: scaleExp,
             '-moz-transform'	: scaleExp,
@@ -86,6 +86,7 @@
                       endScale	        : parseFloat(settings.end_scale),
                       startOpacity      : parseFloat(settings.start_opacity),
                       endOpacity        : parseFloat(settings.end_opacity),
+                      transDuration     : parseInt(settings.trans_duration),
                       containerSelector : container,
                       descrSelector     : settings.desc_selector
                   },
@@ -95,14 +96,14 @@
 
 
               // random positioning on tablets and bigger screens, if requested
-              if (settings.random_position) {
+              if (settings.position_randomly) {
                   var randomlyPositioned = false;
 
                   // add window load and resize events
                   $(window).off('.proximity');
                   $(window).on('load.proximity resize.proximity', function() {
                       // initialize grid for random item positioning
-                      var cellSize = parseInt(settings.random_cell_size),
+                      var cellSize = parseInt(settings.random_grid_cell_size),
                           xGrid = Math.floor($container.width() / cellSize),
                           yGrid = Math.floor($container.height() / cellSize),
                           grid = new Array(xGrid * yGrid),
@@ -123,7 +124,7 @@
                               return false;
                           };
 
-                      // position all items and their dialogs
+                      // position all items
                       $items.each(function () {
                           var $item = $(this);
 
@@ -142,7 +143,7 @@
                               $item.css({'position': 'absolute', 'top': $pos.iTop, 'left': $pos.iLeft});
 
                           } else {
-                              // positioning of item and dialog in css
+                              // position item in css
                               $item.css({'position': 'static', 'top': 'auto', 'left': 'auto'});
                           }
                       });
@@ -163,86 +164,6 @@
 
           }); // container instances
 
-        }
-    };
-
-    /**
-     * Defines deep linking for proximity items, meaning each item has a unique url, by which the item content is requested from the server.
-     * This is valid also for AJAX calls. The URL's are added to the browser history and can be shared (trigger a full page request).
-     *
-     * See the excellent article about deep linking: http://www.codemag.com/Article/1301091
-     */
-    Drupal.behaviors.proximityDeepLinks =  {
-        attach: function() {
-            // Iterate through all proximity container instances
-            $.each(Drupal.settings.proximity, function (container, settings) {
-
-                var $container  = $(container),
-                    $items      = $container.find(settings.item_selector),
-                    _positionModalDialog = function($item) {
-                        // size and position the modal dialog relative to the item position
-                        var $dialog     = $container.find('#pe-modal-dialog .modal-dialog'),
-                            wDialog     = $dialog.width(),
-                            iTop        = parseInt($item.css('top')),
-                            iLeft       = parseInt($item.css('left')),
-                            padding     = 20,
-                            wItem       = $item.width() + padding,
-                            hShift      = $container.offset().left,
-                            // show dialog always inside of the item container (left or right of cell
-                            leftPos     = (iLeft + wItem + wDialog > $container.width())
-                                ? Math.max(iLeft + hShift - wDialog - padding, hShift)    // left of cell
-                                : iLeft + hShift + wItem;                                 // right of cell
-
-                        // position dialog
-                        $dialog.css({'position': 'absolute', 'top': iTop, 'left': leftPos});
-                    },
-                    _setModalBackdropHeight  = function () {
-                        var hContent    = $container.find('#pe-modal-dialog .modal-content').height(),
-                            hDialog     = $container.find('#pe-modal-dialog .modal-dialog').height(),
-                            hTotal      = $(window).height() + hContent - hDialog;
-
-                        // update backdrop height according to dialog content
-                        $container.find('#pe-modal-dialog .modal-backdrop').css('height', hTotal);
-                    };
-
-                // attach click event to all proximity items to load dialog content via AJAX
-                $items.once('click', function() {
-                    $(this).on('click', function(ev) {
-                        // load content in defined container via ajax
-                        var $item = $(this),
-                            $button = $item.find('a.btn'),
-                            param = $button.attr('data-ajax-load-param'),
-                            $target = $('#pe-modal-dialog .modal-body'),
-                            ajax_url = settings.ajax_url + param;
-
-                        // set target container as requested
-                        if (settings.proximity_content_container == 'page_cont') {
-                            $target = $('#pe-content-container');
-                        }
-
-                        // set the loading html on the target and load target content via ajax
-                        $target.html(settings.ajax_loading);
-                        $target.load(ajax_url, function( response, status, xhr ) {
-                            if ( status == "error" ) {
-                                var msg = "Content could not be loaded: ";
-                                $target.html( msg + xhr.status + " " + xhr.statusText );
-                            } else {
-                                // make sure all behaviors are attached to new content
-                                Drupal.attachBehaviors($target, settings);
-
-                                // set dialog position when content is available (depends on content)
-                                if (settings.proximity_content_container == 'modal_rel') {
-                                    _positionModalDialog($item);
-                                }
-
-                                // set backdrop height according to content height (wait a little to get correct height)
-                                window.setTimeout(_setModalBackdropHeight, 200);
-                            }
-                        });
-                    });
-                });
-
-            }); // container instances
         }
     };
 

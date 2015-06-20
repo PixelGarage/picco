@@ -23,11 +23,11 @@ include_once($pixelgarage_path . '/inc/theme.inc');        // all theme override
  * for each proximity item. This parameter is added at the end of the ajax request url allowing to retrieve
  * a specific content from the server (see next api function). This specific item content is then added to the dialog.
  *
- * @param $ajax_load_params array   Array of ajax load parameters to be altered, one for each proximity item
- *                                  retrieved by the view.
+ * @param $ajax_load_params array   Array of ajax load parameters to be altered, one for each proximity item (row)
+ *                                  retrieved by the view. Default is the views row index.
  * @param $view_result      array   The result array of the view.
  */
-function pixelgarage_proximity_ajax_load_params_alter(&$ajax_load_params, &$view_result) {
+function pixelgarage_proximity_ajax_load_params_alter(&$ajax_load_params, $view_result) {
   // Return the node id as ajax parameter for each item.
   foreach ($view_result as $id => $item) {
     $ajax_load_params[$id] = $item->nid;
@@ -35,17 +35,16 @@ function pixelgarage_proximity_ajax_load_params_alter(&$ajax_load_params, &$view
 }
 
 /**
- * Alters the render item that is returned in the ajax call. The $args variable contains the specific arguments
- * added to a specific ajax request.
+ * Returns the item specific content as render array or html string. The $param attribute contains the item specific parameter
+ * added to the ajax request.
  *
  * @param $render_item  mixed   The rendered content to be returned to the client. The $render_item should be
  *                              replaced either by a string (rendered html content), a render array or an integer (error code).
- * @param $args         array   The array of all parameters added to the ajax request for a specific proximity item (see above).
+ * @param $param        string  The item specific load parameter (see also hook_proximity_ajax_load_params_alter).
  */
-function pixelgarage_proximity_ajax_render_item_alter(&$render_item, &$args) {
+function pixelgarage_proximity_ajax_render_item_alter(&$render_item, $param) {
   // return the render array for the specific node, if available
-  $nid = $args[1];
-  if ($node= node_load($nid)) {
+  if ($node= node_load($param)) {
     $view_mode = 'full';
     if (property_exists($node, 'ds_switch')) {
       // take an alternate view mode set by the ds switch

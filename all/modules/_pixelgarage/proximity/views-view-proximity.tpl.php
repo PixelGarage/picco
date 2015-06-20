@@ -13,7 +13,7 @@
     <div class="pe-item <?php print 'pe-item-' . $id; ?> <?php if ($classes_array[$id]) print $classes_array[$id]; ?>" style="margin-left: -4px; width: <?php print $percentage_width; ?>%">
       <div class="pe-item-inner">
         <!-- modal trigger -->
-        <a class="btn" role="button" data-toggle="modal" data-target="#pe-modal-dialog" data-ajax-load-param="<?php if ($ajax_load_params[$id]) print $ajax_load_params[$id]; ?>">
+        <a class="btn" role="button" href="<?php print $deep_link_base_url . $ajax_load_params[$id]; ?>" data-ajax-load-param="<?php print $ajax_load_params[$id]; ?>" data-toggle="modal" data-target="#pe-modal-dialog" >
           <?php print $row; ?>
         </a>
       </div>
@@ -22,18 +22,22 @@
   <?php endforeach; ?>
 
   <!--
-  Modal dialog
-  The content for the body is retrieved via AJAX
+  Modal dialog displaying the item content
+  The item content is retrieved via AJAX or added directly on full page loads
   -->
-  <div id="pe-modal-dialog" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div id="pe-modal-dialog" class="modal" tabindex="-1" role="dialog" aria-labelledby="peModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <!-- Header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <?php if ($title): ?>
+            <h2 class="modal-title" id="peModalLabel"><?php print $title; ?></h2>
+          <?php endif; ?>
         </div>
         <!-- Body -->
         <div class="modal-body">
+          <?php if ($rendered_item) print render($rendered_item) ; ?>
         </div>
         <!-- Footer -->
         <div class="modal-footer">

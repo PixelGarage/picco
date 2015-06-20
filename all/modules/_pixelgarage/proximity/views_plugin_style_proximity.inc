@@ -15,8 +15,8 @@ class views_plugin_style_proximity extends views_plugin_style {
     // define default options
     $default_options = array(
       'proximity_content_container' => 'modal_fix',
-      'proximity_random_position' => 1,
-      'proximity_random_cell_size' => 40,
+      'proximity_position_randomly' => 1,
+      'proximity_random_grid_cell_size' => 40,
       'proximity_item_selector' => '',
       'proximity_desc_selector' => '',
       'proximity_start_scale' => 1.0,
@@ -72,7 +72,7 @@ class views_plugin_style_proximity extends views_plugin_style {
       '#options' => array(
         'modal_fix' => t('Modal dialog fixed position'),
         'modal_rel' => t('Modal dialog relative to item'),
-        'page_cont' => t('Page container'),
+        'div_cont' => t('Page container'),
       ),
       '#description' => t('Select one of the given container options defining in which container the item content is displayed. Options are: modal dialog relative to item position, modal dialog with fixed position defined in css and a flexible page container.'),
       '#default_value' => $default_values['proximity_content_container'],
@@ -80,19 +80,19 @@ class views_plugin_style_proximity extends views_plugin_style {
       '#weight' => -2,
       '#fieldset' => 'proximity',
     );
-    $form['proximity_random_position'] = array(
+    $form['proximity_position_randomly'] = array(
       '#type' => 'checkbox',
       '#title' => t('Position items randomly'),
       '#description' => t('Define, if the proximity items are distributed randomly in the container (default). Deselecting this property means, that the items have to be positioned with css.'),
-      '#default_value' => $default_values['proximity_random_position'],
+      '#default_value' => $default_values['proximity_position_randomly'],
       '#weight' => -1,
       '#fieldset' => 'proximity',
     );
-    $form['proximity_random_cell_size'] = array(
+    $form['proximity_random_grid_cell_size'] = array(
       '#type' => 'textfield',
       '#title' => t('Random grid cell size'),
       '#description' => t('Define the cell size of the grid used for random distribution (default = 40px).'),
-      '#default_value' => $default_values['proximity_random_cell_size'],
+      '#default_value' => $default_values['proximity_random_grid_cell_size'],
       '#size' => 5,
       '#weight' => 0,
       '#fieldset' => 'proximity',
