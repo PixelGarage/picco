@@ -143,13 +143,6 @@
   </div>
 </div>
 
-<!-- picco logo -->
-<?php if (!empty($picco_logo)): ?>
-  <div id="logo-wrapper">
-    <img id="picco-logo" class="logo picco-logo fa fa-pause" src="<?php print $picco_logo; ?>">
-  </div>
-<?php endif; ?>
-
 <div class="main-container container">
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
@@ -183,7 +176,9 @@
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       <!-- Messages -->
-      <?php print $messages; ?>
+      <div id="messages">
+        <?php print $messages; ?>
+      </div>
       <!-- Admin Tabs -->
       <?php if (!empty($tabs)): ?>
         <?php print render($tabs); ?>
@@ -198,6 +193,13 @@
       <?php endif; ?>
       <!-- Main content -->
       <?php print render($page['content']); ?>
+
+      <!-- picco logo -->
+      <?php if (!empty($picco_logo)): ?>
+        <div id="logo-wrapper">
+          <img id="picco-logo" class="logo picco-logo fa fa-pause" src="<?php print $picco_logo; ?>">
+        </div>
+      <?php endif; ?>
     </section>
 
     <?php if (!empty($page['sidebar_second'])): ?>

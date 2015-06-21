@@ -1,4 +1,199 @@
-/* --------------------------------------------------
- * Pixelgarage Content
+/*
+ *  Content section
  * --------------------------------------------------*/
 
+// Variables
+// -------------------------
+@v5-bg-color: #000;
+@v5-text-color: #fff;
+@z-index-content: 20;
+@z-index-controls: 100;
+
+
+// Mixins
+// -------------------------
+
+
+
+// General settings
+// -------------------------
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+
+  header.navbar {
+    // hide navigation bar
+    display: none;
+  }
+
+  #background-wrapper {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img.bg-img {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -100;
+
+      &.bg-img1 {
+        // display first image
+        display: block;
+      }
+    }
+  }
+
+  #video-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    video#picco-video {
+      display: block;
+      position: relative;
+      min-width: 100%;
+      min-height: 100%;
+      outline: none;
+      transition: 1s opacity;
+      opacity: 1;
+      z-index: -99;
+
+      &.fadeout {
+        opacity: 0.6;
+      }
+    }
+
+    #video-controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+
+      button#playpause {
+        display: inline-block;
+        color: @v5-text-color;
+        font-size: 1em;
+        border: none;
+        outline: none;
+        background: none;
+      }
+    }
+  }
+  &.admin-menu #video-wrapper {
+    // compensate admin menu
+    margin-top: 29px !important;
+  }
+
+  #audio-wrapper {
+    position: fixed;
+    bottom: 10px;
+    right: @grid-gutter-width/2;
+    z-index: @z-index-controls;
+
+    #audio-controls {
+      cursor: pointer;
+
+      .beat-title {
+        display: inline-block;
+        font-family: @pxl-title-font;
+        font-size: @font-size-base;
+        color: @v5-text-color;
+      }
+
+      button#toggle-audio {
+        display: inline-block;
+        max-width: 50px;
+        border: none;
+        outline: none;
+        background: none;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .main-container {
+    margin-top: 30px;
+
+    .row {
+      section {
+        #messages {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: @zindex-popover;
+
+          .messages {
+            margin: 0 auto;
+            width: 70%;
+          }
+        }
+
+        ul.tabs--primary {
+          position: absolute;
+          top: 7.5px;
+          right: @grid-gutter-width/2;
+          z-index: @z-index-content;
+        }
+
+        .region-content {
+          #block-system-main {
+            /* display content in front of logo and menu */
+            position: relative;
+            z-index: @z-index-content;
+          }
+        }
+
+        #logo-wrapper {
+          #pxl-mixins.center-vertically;
+          position: fixed;
+          left: 0;
+          width: 100%;
+          text-align: center;
+
+          img.logo {
+            cursor: pointer;
+            display: inline-block;
+            width: 25%;
+            min-width: 280px;
+          }
+        }
+
+      }
+    }
+  }
+
+  .footer {
+    // hide footer
+    display: none;
+  }
+
+  @media @narrow {
+    // show background image in narrow mode instead of video
+    #background-wrapper {
+      display: none;
+    }
+
+    #video-wrapper {
+      display: block;
+    }
+  }
+
+}

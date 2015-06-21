@@ -173,11 +173,19 @@
                         return;
                     }
 
-                    // get param from current location
-                    var param = window.location.pathname.split("/").pop();
+                    // check if current location is a proximity item deep link
+                    var path = window.location.href;
+                    if (path.indexOf(settings.deep_link_base_url) >= 0) {
+                        // get param from current location
+                        var param = path.split("/").pop();
 
-                    // load item with AJAX
-                    _loadItemContent(param);
+                        // load item with AJAX
+                        _loadItemContent(param);
+
+                    } else {
+                        window.location.reload();
+
+                    }
                 });
 
 
