@@ -138,8 +138,11 @@
     <?php if (!empty($beat_mime_2) && !empty($beat_src_2)): ?><source src="<?php print $beat_src_2; ?>" type="<?php print $beat_mime_2; ?>" /><?php endif; ?>
   </audio>
   <div id="audio-controls">
+    <div class="audio-title">
+      <div class="beat-title"><?php print $beat_title; ?></div>
+      <div class="beat-artist"><?php print $beat_artist; ?></div>
+    </div>
     <button id="toggle-audio" title="play"><img class="audio-play" src="<?php print $beat_icon_src; ?>"></button>
-    <div class="beat-title"><?php print $beat_title; ?></div>
   </div>
 </div>
 
@@ -193,13 +196,6 @@
       <?php endif; ?>
       <!-- Main content -->
       <?php print render($page['content']); ?>
-
-      <!-- picco logo -->
-      <?php if (!empty($picco_logo)): ?>
-        <div id="logo-wrapper">
-          <img id="picco-logo" class="logo picco-logo fa fa-pause" src="<?php print $picco_logo; ?>">
-        </div>
-      <?php endif; ?>
     </section>
 
     <?php if (!empty($page['sidebar_second'])): ?>

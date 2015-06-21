@@ -50,9 +50,11 @@ function pixelgarage_preprocess_page(&$vars) {
     }
     $icon_uri = $node->field_image[LANGUAGE_NONE][0]['uri'];
     $beat_title = $node->title;
+    $beat_artist = $node->field_artist[LANGUAGE_NONE][0]['value'];
   }
   $vars['beat_icon_src'] = !empty($icon_uri) ? file_create_url($icon_uri) : null;
   $vars['beat_title'] = $beat_title;
+  $vars['beat_artist'] = $beat_artist;
 
   // background video in different formats
   $video_path = file_create_url('public://') . 'videos';

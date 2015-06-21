@@ -100,21 +100,23 @@ body {
   #audio-wrapper {
     position: fixed;
     bottom: 10px;
-    right: @grid-gutter-width/2;
+    right: @grid-gutter-width / 2;
     z-index: @z-index-controls;
 
     #audio-controls {
       cursor: pointer;
 
-      .beat-title {
+      .audio-title {
         display: inline-block;
+        vertical-align: middle;
         font-family: @pxl-title-font;
         font-size: @font-size-base;
-        color: @v5-text-color;
+        text-align: center;
       }
 
       button#toggle-audio {
         display: inline-block;
+        vertical-align: middle;
         max-width: 50px;
         border: none;
         outline: none;
@@ -134,7 +136,7 @@ body {
     .row {
       section {
         #messages {
-          position: fixed;
+          position: absolute;
           top: 0;
           left: 0;
           width: 100%;
@@ -154,29 +156,29 @@ body {
         }
 
         .region-content {
-          #block-system-main {
-            /* display content in front of logo and menu */
-            position: relative;
-            z-index: @z-index-content;
+          #block-block-1 {
+            #pxl-mixins.center-vertically;
+            position: fixed;
+            left: 0;
+            width: 100%;
+            text-align: center;
+
+            img {
+              cursor: pointer;
+              display: inline-block;
+              width: 20%;
+              min-width: 280px;
+              height: auto;
+            }
           }
         }
 
-        #logo-wrapper {
-          #pxl-mixins.center-vertically;
-          position: fixed;
-          left: 0;
-          width: 100%;
-          text-align: center;
-
-          img.logo {
-            cursor: pointer;
-            display: inline-block;
-            width: 25%;
-            min-width: 280px;
-          }
-        }
-
-      }
+      } // section
+    } // row
+  }
+  &.front .main-container {
+    #block-block-1 {
+      z-index: @z-index-content;
     }
   }
 

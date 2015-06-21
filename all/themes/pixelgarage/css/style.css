@@ -8762,7 +8762,7 @@ form#user-login {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 10%;
+  left: 0;
   right: 0;
   overflow: hidden;
 }
@@ -8816,7 +8816,6 @@ form#user-login {
 }
 .pe-container .pe-item.pe-item-0 a .views-field-title {
   font-size: 18px;
-  color: #fff;
   opacity: 1;
 }
 .pe-container .pe-item.pe-item-1 {
@@ -8841,7 +8840,6 @@ form#user-login {
 }
 .pe-container .pe-item.pe-item-1 a .views-field-title {
   font-size: 18px;
-  color: #fff;
   opacity: 1;
 }
 .pe-container .pe-item.pe-item-2 {
@@ -8866,7 +8864,6 @@ form#user-login {
 }
 .pe-container .pe-item.pe-item-2 a .views-field-title {
   font-size: 18px;
-  color: #fff;
   opacity: 1;
 }
 .pe-container .pe-item.pe-item-3 {
@@ -8891,7 +8888,6 @@ form#user-login {
 }
 .pe-container .pe-item.pe-item-3 a .views-field-title {
   font-size: 18px;
-  color: #fff;
   opacity: 1;
 }
 .pe-container .pe-item.pe-item-4 {
@@ -8916,7 +8912,6 @@ form#user-login {
 }
 .pe-container .pe-item.pe-item-4 a .views-field-title {
   font-size: 18px;
-  color: #fff;
   opacity: 1;
 }
 @media screen and (min-width: 768px) {
@@ -8942,7 +8937,6 @@ form#user-login {
   }
   .pe-container .pe-item.pe-item-0 a .views-field-title {
     font-size: 18px;
-    color: #fff;
     opacity: 1;
   }
   .pe-container .pe-item.pe-item-1 {
@@ -8967,7 +8961,6 @@ form#user-login {
   }
   .pe-container .pe-item.pe-item-1 a .views-field-title {
     font-size: 18px;
-    color: #fff;
     opacity: 1;
   }
   .pe-container .pe-item.pe-item-2 {
@@ -8992,7 +8985,6 @@ form#user-login {
   }
   .pe-container .pe-item.pe-item-2 a .views-field-title {
     font-size: 18px;
-    color: #fff;
     opacity: 1;
   }
   .pe-container .pe-item.pe-item-3 {
@@ -9017,7 +9009,6 @@ form#user-login {
   }
   .pe-container .pe-item.pe-item-3 a .views-field-title {
     font-size: 18px;
-    color: #fff;
     opacity: 1;
   }
   .pe-container .pe-item.pe-item-4 {
@@ -9042,7 +9033,6 @@ form#user-login {
   }
   .pe-container .pe-item.pe-item-4 a .views-field-title {
     font-size: 18px;
-    color: #fff;
     opacity: 1;
   }
 }
@@ -9052,15 +9042,15 @@ form#user-login {
 .pe-container #pe-modal-dialog .modal-dialog {
   position: absolute;
   left: 5%;
-  bottom: 0;
+  top: 0;
   margin: 0 ;
   width: 90%;
   max-height: 90vh;
 }
 @media screen and (min-width: 768px) {
   .pe-container #pe-modal-dialog .modal-dialog {
-    left: 10%;
-    width: 50%;
+    left: 15%;
+    width: 35%;
     max-height: 60vh;
   }
 }
@@ -9069,6 +9059,7 @@ form#user-login {
   border: none;
   border-radius: 0;
   box-shadow: none;
+  color: #888888;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .pe-container #pe-modal-dialog .modal-dialog .modal-content .modal-header {
@@ -9305,14 +9296,16 @@ body #audio-wrapper {
 body #audio-wrapper #audio-controls {
   cursor: pointer;
 }
-body #audio-wrapper #audio-controls .beat-title {
+body #audio-wrapper #audio-controls .audio-title {
   display: inline-block;
+  vertical-align: middle;
   font-family: 'LauraWorthingtonCharcuterieSansBold';
   font-size: 14px;
-  color: #ffffff;
+  text-align: center;
 }
 body #audio-wrapper #audio-controls button#toggle-audio {
   display: inline-block;
+  vertical-align: middle;
   max-width: 50px;
   border: none;
   outline: none;
@@ -9326,7 +9319,7 @@ body .main-container {
   margin-top: 30px;
 }
 body .main-container .row section #messages {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -9342,12 +9335,7 @@ body .main-container .row section ul.tabs--primary {
   right: 15px;
   z-index: 20;
 }
-body .main-container .row section .region-content #block-system-main {
-  /* display content in front of logo and menu */
-  position: relative;
-  z-index: 20;
-}
-body .main-container .row section #logo-wrapper {
+body .main-container .row section .region-content #block-block-1 {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -9358,11 +9346,15 @@ body .main-container .row section #logo-wrapper {
   width: 100%;
   text-align: center;
 }
-body .main-container .row section #logo-wrapper img.logo {
+body .main-container .row section .region-content #block-block-1 img {
   cursor: pointer;
   display: inline-block;
-  width: 25%;
+  width: 20%;
   min-width: 280px;
+  height: auto;
+}
+body.front .main-container #block-block-1 {
+  z-index: 20;
 }
 body .footer {
   display: none;

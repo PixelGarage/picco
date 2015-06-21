@@ -6,7 +6,7 @@
 // Variables
 // -------------------------
 @pe-bg-color: rgba(255,255,255,0.9);
-@pe-text-color: @gray;
+@pe-text-color: #888;
 @pe-link-color: @gray-dark;
 @pe-link-color-hover: @gray-light;
 
@@ -73,7 +73,6 @@
 
     .views-field-title {
       font-size: @font-size-large;
-      color: #fff;
       opacity: 1;
     }
   }
@@ -87,7 +86,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 10%;
+  left: 0;
   right: 0;
   overflow: hidden;
 
@@ -169,14 +168,14 @@
     .modal-dialog {
       position: absolute;
       left: 5%;
-      bottom: 0;
+      top: 0;
       margin: 0 ;
       width: 90%;
       max-height: 90vh;
 
       @media @tablet {
-        left: 10%;
-        width: 50%;
+        left: 15%;
+        width: 35%;
         max-height: 60vh;
       }
 
@@ -185,6 +184,7 @@
         border: none;
         border-radius: 0;
         box-shadow: none;
+        color: @pe-text-color;
         background-color: @pe-bg-color;
 
         .modal-header {
