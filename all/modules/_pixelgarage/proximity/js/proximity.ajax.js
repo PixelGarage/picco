@@ -126,6 +126,8 @@
                 // open modal dialog, if deep link request occurred
                 if (settings.deep_link_request) {
                     $dialog.fadeIn(transDuration).modal('show');
+                    // reset flag
+                    settings.deep_link_request = false;
 
                 }
 
@@ -174,13 +176,15 @@
                     }
 
                     // check if current location is a proximity item deep link
-                    var path = window.location.href;
+                    var path = window.location.href,
+                        isAdminOverlay = path.indexOf('#overlay=admin') > -1;
                     if (path.indexOf(settings.deep_link_base_url) >= 0) {
                         // get param from current location
                         var param = path.split("/").pop();
 
-                        // load item with AJAX
-                        _loadItemContent(param);
+                        // load item with AJAX, if no admin overlay is requested
+                        if (!isAdminOverlay)
+                            _loadItemContent(param);
 
                     } else {
                         window.location.reload();
