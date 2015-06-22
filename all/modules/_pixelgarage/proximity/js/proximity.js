@@ -75,7 +75,7 @@
           // Iterate through all proximity container instances
           $.each(Drupal.settings.proximity, function (container, settings) {
 
-              var $container  = $(container),
+              var $container  = $('#' + container),
                   $items      = $container.find(settings.item_selector),
                   eventData   = {
                       min               : 0,

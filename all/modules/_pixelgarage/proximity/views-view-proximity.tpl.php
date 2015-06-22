@@ -5,15 +5,15 @@
  */
 ?>
 
-<div class="pe-container">
+<div id="<?php print $container_id; ?>" class="pe-container">
   <div class="pe-background-image"></div>
 
   <?php foreach ($rows as $id => $row): ?>
 
-    <div class="pe-item <?php print 'pe-item-' . $id; ?> <?php if ($classes_array[$id]) print $classes_array[$id]; ?>" style="margin-left: -4px; width: <?php print $percentage_width; ?>%">
+    <div class="pe-item <?php print 'pe-item-' . $ajax_load_params[$id]; ?> <?php if ($classes_array[$id]) print $classes_array[$id]; ?>" style="margin-left: -4px; width: <?php print $percentage_width; ?>%">
       <div class="pe-item-inner">
         <!-- modal trigger -->
-        <a class="btn" role="button" href="<?php print $deep_link_base_url . $ajax_load_params[$id]; ?>" data-ajax-load-param="<?php print $ajax_load_params[$id]; ?>" data-toggle="modal" data-target="#pe-modal-dialog" >
+        <a class="btn" role="button" href="<?php print $deep_link_base_url . $ajax_load_params[$id]; ?>" data-ajax-load-param="<?php print $ajax_load_params[$id]; ?>" data-toggle="modal" data-target="#pe-modal-dialog-<?php print $container_index; ?>" >
           <?php print $row; ?>
         </a>
       </div>
@@ -25,7 +25,7 @@
   Modal dialog displaying the item content
   The item content is retrieved via AJAX or added directly on full page loads
   -->
-  <div id="pe-modal-dialog" class="modal" tabindex="-1" role="dialog" aria-labelledby="peModalLabel" aria-hidden="true">
+  <div id="pe-modal-dialog-<?php print $container_index; ?>" class="modal" tabindex="-1" role="dialog" aria-labelledby="peModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <!-- Header -->
@@ -52,6 +52,6 @@
   Content container (used for page transitions)
   The content for the body is retrieved via AJAX
   -->
-  <div id="pe-content-container" class="pe-content-container" role="page"></div>
+  <div id="pe-content-container-<?php print $container_index; ?>" class="pe-content-container" role="page"></div>
 
 </div>

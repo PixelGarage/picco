@@ -13,18 +13,19 @@ define('PROXIMITY_ITEM_NOT_FOUND', 1);
 /**
  * Holds base url for an item page callback. Use a 'unique' string to prevent conflicts with generated url's.
  */
-define('PROXIMITY_ITEM_BASE_URL', 'proximity-item/');
+define('PROXIMITY_ITEM_BASE_URL', 'proximity-container-item/');
 
 /**
  * Holds base url for an item ajax callback. Use a 'unique' string to prevent conflicts with generated url's.
  */
-define('PROXIMITY_ITEM_AJAX_URL', 'ajax/pe-item/');
+define('PROXIMITY_ITEM_AJAX_URL', 'ajax/pe-container-item/');
 
 
 /**
- * Holds parameter of page callback
+ * Holds global parameters of page callback
  */
 $page_callback_param = false;
+$page_callback_container = false;
 
 
 /* -----------------------------------------------------------------
@@ -35,16 +36,16 @@ $page_callback_param = false;
  */
 function proximity_menu() {
   // handles item full page request
-  $items[PROXIMITY_ITEM_BASE_URL . '%'] = array(
+  $items[PROXIMITY_ITEM_BASE_URL . '%/%'] = array(
     'page callback' => 'proximity_page_callback',
-    'page arguments' => array(1),
+    'page arguments' => array(1,2),
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
   );
   // handles AJAX requests
-  $items[PROXIMITY_ITEM_AJAX_URL . '%'] = array(
+  $items[PROXIMITY_ITEM_AJAX_URL . '%/%'] = array(
     'page callback' => 'proximity_ajax_callback',
-    'page arguments' => array(2),
+    'page arguments' => array(2,3),
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
     'delivery callback' => 'proximity_ajax_delivery_callback',
@@ -55,11 +56,12 @@ function proximity_menu() {
 /**
  * Page callback function for page request.
  */
-function proximity_page_callback($param) {
-  global $page_callback_param;
+function proximity_page_callback($container_index, $param) {
+  global $page_callback_param, $page_callback_container;
 
-  // set page callback param globally
+  // set page callback parameters globally
   $page_callback_param = $param;
+  $page_callback_container = $container_index;
 
   // return empty main content (item is rendered in proximity view)
   return '';
@@ -68,9 +70,9 @@ function proximity_page_callback($param) {
 /**
  * Page callback function for AJAX request.
  */
-function proximity_ajax_callback($param) {
+function proximity_ajax_callback($container_index, $param) {
   $render_item = PROXIMITY_ITEM_NOT_FOUND;
-  drupal_alter('proximity_ajax_render_item', $render_item, $param);
+  drupal_alter('proximity_ajax_render_item', $container_index, $param, $render_item);
 
   return $render_item;
 }
@@ -150,8 +152,6 @@ function proximity_views_api() {
  * @param $vars array   Variables used in the view theming.
  */
 function template_preprocess_views_view_proximity(&$vars) {
-  global $base_url;
-
   // Run preprocess function for unformatted style
   template_preprocess_views_view_unformatted($vars);
 
@@ -160,33 +160,39 @@ function template_preprocess_views_view_proximity(&$vars) {
   $options = $vars['options'];
 
   //
-  // render specific item on deep item link callback
-  global $page_callback_param;
+  // render the specific item in the given proximity container (index)
+  // in case of a deep item link callback
+  global $page_callback_param, $page_callback_container;
+  static $pe_container_index = 0;
   $rendered_item = null;
-  if ($page_callback_param) {
-    // render the requested item content
-    $rendered_item = proximity_ajax_callback($page_callback_param);
+
+  // deep link callback: render the requested item if the current container equals the one of the deep link
+  if ($page_callback_param && $pe_container_index == $page_callback_container) {
+    $rendered_item = proximity_ajax_callback($page_callback_container, $page_callback_param);
 
     // reset global parameter
     $page_callback_param = false;
+    $page_callback_container = false;
   }
   $vars['rendered_item'] = $rendered_item;
 
 
   // add additional proximity options for use in javascript
-  $container = '.view-' . drupal_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' .pe-container';
+  global $base_url;
   $desc_selector = !empty($options['proximity_desc_selector']) ? $options['proximity_desc_selector'] : '';
-  $ajax_base_url = $base_url . '/' . PROXIMITY_ITEM_AJAX_URL;
-  $deep_link_base_url = '/' . PROXIMITY_ITEM_BASE_URL;
+  $ajax_base_url = $base_url . '/' . PROXIMITY_ITEM_AJAX_URL . $pe_container_index . '/';
+  $deep_link_base_url = '/' . PROXIMITY_ITEM_BASE_URL . $pe_container_index . '/';
 
   $img_path = $base_url . '/' . drupal_get_path('module', 'proximity') . '/ajax-loader.gif';
   $ajax_loading_html = t('<p>Loading content</p></br>');
   $ajax_loading_html .= '<div id="proximity-ajax-loader"><img src="' . $img_path . '" alt="loading..."/></div>';
 
   // Setup proximity settings for specific container
+  $container_id = 'pe-container-' . $pe_container_index;
   $js_settings = array(
     'proximity' => array(
-      $container => array(
+      'deep_link_base' => PROXIMITY_ITEM_BASE_URL,
+      $container_id => array(
         // proximity parameter
         'position_randomly' => $options['proximity_position_randomly'],
         'random_grid_cell_size' => $options['proximity_random_grid_cell_size'],
@@ -207,13 +213,15 @@ function template_preprocess_views_view_proximity(&$vars) {
       ),
     ),
   );
+  $vars['container_id'] = $container_id;
+  $vars['container_index'] = $pe_container_index++;
 
   // create ajax load array (a parameter per item to be added to the ajax url)
   $ajax_load_params = array();
   foreach ($view->result as $id => $item) {
     $ajax_load_params[$id] = $id;
   }
-  drupal_alter('proximity_ajax_load_params', $ajax_load_params, $view->result);
+  drupal_alter('proximity_ajax_load_params', $pe_container_index, $view->result, $ajax_load_params);
   $vars['ajax_load_params'] = $ajax_load_params;
   $vars['deep_link_base_url'] = $deep_link_base_url;
 
