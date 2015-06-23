@@ -6,3 +6,4 @@ package = Proximity
 files[] = views_plugin_style_proximity.inc
 
 dependencies[] = views
+version = 1.2
