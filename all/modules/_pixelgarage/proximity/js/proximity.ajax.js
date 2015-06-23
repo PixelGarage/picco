@@ -1,12 +1,12 @@
 /**
  * Proximity AJAX implementation
  *
- * AJAX implementation for the proximity items. A single pointer click requests the item content via AJAX calls and allows to display
- * the content in different containers. The implementation supports deep linking creating a unique url for each proximity item, which
- * is added to the browser history and can be shared or bookmarked.
+ * AJAX implementation for the proximity items. A single pointer click requests the item content via AJAX calls
+ * and allows to display the content in different containers. The implementation supports deep linking creating
+ * a unique url for each proximity item, which is added to the browser history and can be shared or bookmarked.
  *
- * Deep linking is implemented with the new HTML5 features in the history object (pushState, popState), which is supported by
- * the folllowing browsers (January 2013):
+ * Deep linking is implemented with the new HTML5 features in the history object (pushState, popState),
+ * which is supported by the folllowing browsers (January 2013):
  *      IE 10+
  *      Firefox 14 +
  *      Chrome 21 +
@@ -32,7 +32,7 @@
      * Loads the content of a specific proximity item in the given proximity container.
      *
      * @param container_index   int     Defines the container index of the proximity item.
-     * @param param             string  Defines the proximity item parameter.
+     * @param param             string  Defines the specific proximity item parameter.
      * @private
      */
      function loadItemContent(container_index, param) {
@@ -101,8 +101,8 @@
 
                 }
 
-
-                // set backdrop height according to content height (wait a short time to get correct height)
+                // set backdrop height according to content height.
+                // Wait a short time to get correct height
                 window.setTimeout(_setModalBackdropHeight, 200);
             }
         });
@@ -141,10 +141,11 @@
             return;
         }
 
-        // load proximity item, if current location is a proximity item deep link, otherwise reload
+        // load proximity item, if current location is a proximity item deep link,
+        // otherwise reload location
         var path = window.location.href;
 
-        if (path.indexOf(Drupal.settings.proximity.deep_link_base) >= 0) {
+        if (path.indexOf(Drupal.settings.proximity.deep_link_base_path) >= 0) {
             // get param from current location
             var isAdminOverlay = path.indexOf('#overlay=admin') > -1,
                 pathSplitter = path.split("/"),
@@ -179,6 +180,7 @@
 
                 //
                 // open modal dialog, if deep link request occurred
+                // in for an item of a specific container
                 if (settings.deep_link_request) {
                     $dialog.fadeIn(transDuration).modal('show');
                     // reset flag

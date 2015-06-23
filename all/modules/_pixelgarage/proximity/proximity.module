@@ -11,14 +11,14 @@ define('PROXIMITY_ITEM_NOT_FOUND', 1);
 
 
 /**
- * Holds base url for an item page callback. Use a 'unique' string to prevent conflicts with generated url's.
+ * Holds the base path for an item page callback. Use a 'unique' string to prevent conflicts with generated url's.
  */
-define('PROXIMITY_ITEM_BASE_URL', 'proximity-container-item/');
+define('PROXIMITY_ITEM_BASE_PATH', 'proximity-container-item/');
 
 /**
- * Holds base url for an item ajax callback. Use a 'unique' string to prevent conflicts with generated url's.
+ * Holds the base path for an item ajax callback. Use a 'unique' string to prevent conflicts with generated url's.
  */
-define('PROXIMITY_ITEM_AJAX_URL', 'ajax/pe-container-item/');
+define('PROXIMITY_ITEM_AJAX_PATH', 'ajax/pe-container-item/');
 
 
 /**
@@ -36,14 +36,14 @@ $page_callback_container = false;
  */
 function proximity_menu() {
   // handles item full page request
-  $items[PROXIMITY_ITEM_BASE_URL . '%/%'] = array(
+  $items[PROXIMITY_ITEM_BASE_PATH . '%/%'] = array(
     'page callback' => 'proximity_page_callback',
     'page arguments' => array(1,2),
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
   );
   // handles AJAX requests
-  $items[PROXIMITY_ITEM_AJAX_URL . '%/%'] = array(
+  $items[PROXIMITY_ITEM_AJAX_PATH . '%/%'] = array(
     'page callback' => 'proximity_ajax_callback',
     'page arguments' => array(2,3),
     'type' => MENU_CALLBACK,
@@ -180,8 +180,8 @@ function template_preprocess_views_view_proximity(&$vars) {
   // add additional proximity options for use in javascript
   global $base_url;
   $desc_selector = !empty($options['proximity_desc_selector']) ? $options['proximity_desc_selector'] : '';
-  $ajax_base_url = $base_url . '/' . PROXIMITY_ITEM_AJAX_URL . $pe_container_index . '/';
-  $deep_link_base_url = '/' . PROXIMITY_ITEM_BASE_URL . $pe_container_index . '/';
+  $ajax_base_url = $base_url . '/' . PROXIMITY_ITEM_AJAX_PATH . $pe_container_index . '/';
+  $deep_link_base_url = '/' . PROXIMITY_ITEM_BASE_PATH . $pe_container_index . '/';
 
   $img_path = $base_url . '/' . drupal_get_path('module', 'proximity') . '/ajax-loader.gif';
   $ajax_loading_html = t('<p>Loading content</p></br>');
@@ -191,7 +191,7 @@ function template_preprocess_views_view_proximity(&$vars) {
   $container_id = 'pe-container-' . $pe_container_index;
   $js_settings = array(
     'proximity' => array(
-      'deep_link_base' => PROXIMITY_ITEM_BASE_URL,
+      'deep_link_base_path' => PROXIMITY_ITEM_BASE_PATH,
       $container_id => array(
         // proximity parameter
         'position_randomly' => $options['proximity_position_randomly'],
