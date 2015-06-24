@@ -52,6 +52,8 @@
   Content container (used for page transitions)
   The content for the body is retrieved via AJAX
   -->
-  <div id="pe-content-container-<?php print $container_index; ?>" class="pe-content-container" role="page"></div>
+  <div id="pe-content-container-<?php print $container_index; ?>" class="pe-content-container" role="page">
+    <div class="content"></div>
+  </div>
 
 </div>

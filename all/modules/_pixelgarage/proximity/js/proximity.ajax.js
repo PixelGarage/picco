@@ -212,6 +212,14 @@
                     });
                 });
 
+                // make sure that all content in modal is cleared (videos, audios etc.)
+                $dialog.once('modal-hidden', function() {
+                    $dialog.on('hidden.bs.modal', function() {
+                        // empty the modal body
+                        $(this).find('.modal-body').empty();
+                    });
+                });
+
             }); // proximity container instances
         }
     };

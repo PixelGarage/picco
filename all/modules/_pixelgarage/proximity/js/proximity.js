@@ -75,7 +75,8 @@
           // Iterate through all proximity container instances
           $.each(Drupal.settings.proximity, function (container, settings) {
 
-              var $container  = $('#' + container),
+              var contSelector = '#' + container,
+                  $container  = $(contSelector),
                   $items      = $container.find(settings.item_selector),
                   eventData   = {
                       min               : 0,
@@ -87,7 +88,7 @@
                       startOpacity      : parseFloat(settings.start_opacity),
                       endOpacity        : parseFloat(settings.end_opacity),
                       transDuration     : parseInt(settings.trans_duration),
-                      containerSelector : container,
+                      containerSelector : contSelector,
                       descrSelector     : settings.desc_selector
                   },
                   _getRandomInt = function(min, max) {
