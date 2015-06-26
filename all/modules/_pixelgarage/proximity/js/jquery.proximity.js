@@ -1,5 +1,24 @@
 /**
- * Proximity event for jQuery
+ * Proximity event for jQuery.
+ *
+ * REMARK
+ * The proximity event works excellent for desktop computers, but for mobile devices with touch screen,
+ * the touchmove event is used for scrolling. The adaptation for mobile devices is still open, but
+ * in a limited way the event can be used, because the mousemove event is triggered on a touch click,
+ * as the following article explains:
+ * @info http://www.html5rocks.com/en/mobile/touchandmouse/#toc-pointers.
+ *
+ * In short: when the user uses a mouse and clicks once, it will respond via a click event, but when the user touches
+ * the screen both touch and mouse events will occur. For a single click the order of events is:
+ *  touchstart
+ *  touchmove
+ *  touchend
+ *  mouseover
+ *  mousemove  --> The proximity event is triggered on a pointer click.
+ *  mousedown
+ *  mouseup
+ *  click
+ *
  * ---
  * @author James Padolsey (http://james.padolsey.com)
  * @version 0.1
@@ -32,11 +51,13 @@
         setup: function(data) {
             
             if (!elems[0]) {
+                // attach mousemove event on document (only once)
                 doc.mousemove(mouseMoveHandle);
                 //doc.on('touchmove', touchMoveHandle);
                 //doc.on('touchend', touchEndHandle);
             }
 
+            // add an element receiving proximity events
             elems = elems.add(this);
             
         },

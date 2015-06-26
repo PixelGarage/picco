@@ -157,6 +157,7 @@
                 loadItemContent(containerIndex, param);
 
         } else {
+            // reload page from cache
             window.location.reload();
 
         }
@@ -215,8 +216,11 @@
                 // make sure that all content in modal is cleared (videos, audios etc.)
                 $dialog.once('modal-hidden', function() {
                     $dialog.on('hidden.bs.modal', function() {
-                        // empty the modal body
+                        // empty the modal body stopping all media etc.
                         $(this).find('.modal-body').empty();
+
+                        // set history to home page
+                        window.history.pushState(null, "", "/");
                     });
                 });
 
