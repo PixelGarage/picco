@@ -37,7 +37,13 @@
      */
      function loadItemContent(container_index, param) {
         //
-        // load item specific content in defined container via ajax
+        // Mobile devices: load item content on second touch
+        if (isMobile.any && Drupal.settings.proximityItemTouchCounter == 0) {
+            return;
+        }
+
+        //
+        // load item specific content into specified container via ajax
         var $container  = $('#pe-container-' + container_index),
             $item       = $container.find('.pe-item-' + param),
             $dialog     = $container.find('.modal'),

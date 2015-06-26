@@ -236,6 +236,7 @@ function template_preprocess_views_view_proximity(&$vars) {
   $path = drupal_get_path('module', 'proximity');
   drupal_add_js($js_settings, 'setting');
   drupal_add_js($path . '/js/jquery.proximity.js');
+  drupal_add_js($path . '/js/isMobile.min.js');
   drupal_add_js($path . '/js/proximity.js');
   drupal_add_js($path . '/js/proximity.ajax.js');
   //drupal_add_css($path . '/css/proximity.css');

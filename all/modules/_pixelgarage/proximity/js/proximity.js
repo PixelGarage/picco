@@ -7,6 +7,19 @@
  */
 
 (function($) {
+
+    var $activeItem = null;
+
+    /**
+     * Holds the number of touches on the active proximity item globally (only one active item).
+     *
+     * Used to define mobile behavior. The proximity event on touch screens is triggered on a single pointer touch.
+     * The implemented behavior on touch screens is as follows:
+     *      - first touch on item adds effects to item
+     *      - second touch on item opens displays item content (dialog)
+     */
+    Drupal.settings.proximityItemTouchCounter = 0;
+
     /**
      * Proximity event handler (default implementation).
      *
@@ -32,7 +45,7 @@
      *
      */
     Drupal.settings.proximityEventHandler = function(event, proximity, distance) {
-        // scale and / or change opacity of item depending on the mouse-item distance
+        // transform and / or change opacity of item depending on the pointer proximity
         var $item		= $(this),
             d           = event.data,
             $descr      = $item.find(d.descrSelector),
@@ -40,20 +53,42 @@
             scaleExp	= 'scale(' + scaleVal + ')',
             opacityVal  = proximity * (d.endOpacity - d.startOpacity ) + d.startOpacity;
 
-        // force the item to the front when proximity equals 1 and show its description, if available
         if (proximity == 1) {
-            // put cell to front
+            // force the item to the front when proximity equals 1 and add effects, if available
             $item.css( 'z-index', 10 );
-            $descr.fadeIn(d.transDuration);
+            if (!$item.is($activeItem)) {
+                $descr.fadeIn(d.transDuration);
+                $activeItem = $item;
+                if (isMobile.any) Drupal.settings.proximityItemTouchCounter = 0;
+
+            } else {
+                // count touches on specific item
+                if (isMobile.any) Drupal.settings.proximityItemTouchCounter++;
+
+            }
 
         } else {
-            // reset cell, stop animation and hide description
             $item.css( 'z-index', 1 );
-            $descr.stop(true,true).hide();
+
+            if (proximity == 0) {
+                //
+                // reset active item
+                if ($item.is($activeItem)) {
+                    if (!isMobile.any || (isMobile.any && Drupal.settings.proximityItemTouchCounter > 0)) {
+                        // clear item effects (on mobile only on second click)
+                        $descr.stop(true,true).hide();
+                        $activeItem = null;
+                        Drupal.settings.proximityItemTouchCounter = 0;
+                    } else {
+                        Drupal.settings.proximityItemTouchCounter++;
+                    }
+                }
+
+            }
 
         }
 
-        // scale item and set its transparency
+        // add item effects
         $item.css({
             '-webkit-transform'	: scaleExp,
             '-moz-transform'	: scaleExp,
