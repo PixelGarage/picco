@@ -3,9 +3,9 @@ description = Adds formatter displaying amage fields as Bootstrap Carousel.
 core = 7.x
 package = Bootstrap
 
-; Information added by Drupal.org packaging script on 2014-12-31
-version = "7.x-3.x-dev"
+; Information added by Drupal.org packaging script on 2015-07-13
+version = "7.x-3.1"
 core = "7.x"
 project = "bootstrap_carousel_if"
-datestamp = "1420050783"
+datestamp = "1436783640"
 

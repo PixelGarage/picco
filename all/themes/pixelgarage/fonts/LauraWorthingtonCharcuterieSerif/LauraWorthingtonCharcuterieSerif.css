@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'LauraWorthingtonCharcuterieSerif';
+    src: url('fonts/LauraWorthingtonCharcuterieSerif.eot');
+    src: url('fonts/LauraWorthingtonCharcuterieSerif.eot') format('embedded-opentype'),
+         url('fonts/LauraWorthingtonCharcuterieSerif.woff2') format('woff2'),
+         url('fonts/LauraWorthingtonCharcuterieSerif.woff') format('woff'),
+         url('fonts/LauraWorthingtonCharcuterieSerif.ttf') format('truetype'),
+         url('fonts/LauraWorthingtonCharcuterieSerif.svg#LauraWorthingtonCharcuterieSerif') format('svg');
+}

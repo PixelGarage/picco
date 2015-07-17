@@ -8539,13 +8539,23 @@ div.features-export-list .form-type-checkbox input[type=checkbox] {
 }
 @font-face {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
-  src: url('../fonts/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.eot');
-  src: url('../fonts/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.eot') format('embedded-opentype'), url('../fonts/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.woff2') format('woff2'), url('../fonts/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.woff') format('woff'), url('../fonts/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.ttf') format('truetype'), url('../fonts/LauraWorthingtonBold/LauraWorthingtonCharcuterieSansBold.svg#LauraWorthingtonCharcuterieSansBold') format('svg');
+  src: url('../fonts/LauraWorthingtonCharcuterieSansBold/LauraWorthingtonCharcuterieSansBold.eot');
+  src: url('../fonts/LauraWorthingtonCharcuterieSansBold/LauraWorthingtonCharcuterieSansBold.eot') format('embedded-opentype'), url('../fonts/LauraWorthingtonCharcuterieSansBold/LauraWorthingtonCharcuterieSansBold.woff2') format('woff2'), url('../fonts/LauraWorthingtonCharcuterieSansBold/LauraWorthingtonCharcuterieSansBold.woff') format('woff'), url('../fonts/LauraWorthingtonCharcuterieSansBold/LauraWorthingtonCharcuterieSansBold.ttf') format('truetype'), url('../fonts/LauraWorthingtonCharcuterieSansBold/LauraWorthingtonCharcuterieSansBold.svg#LauraWorthingtonCharcuterieSansBold') format('svg');
 }
 @font-face {
   font-family: 'LauraWorthingtonCharcuterieSans';
-  src: url('../fonts/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.eot');
-  src: url('../fonts/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.eot') format('embedded-opentype'), url('../fonts/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.woff2') format('woff2'), url('../fonts/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.woff') format('woff'), url('../fonts/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.ttf') format('truetype'), url('../fonts/LauraWorthingtonSans/LauraWorthingtonCharcuterieSans.svg#LauraWorthingtonCharcuterieSans') format('svg');
+  src: url('../fonts/LauraWorthingtonCharcuterieSans/LauraWorthingtonCharcuterieSans.eot');
+  src: url('../fonts/LauraWorthingtonCharcuterieSans/LauraWorthingtonCharcuterieSans.eot') format('embedded-opentype'), url('../fonts/LauraWorthingtonCharcuterieSans/LauraWorthingtonCharcuterieSans.woff2') format('woff2'), url('../fonts/LauraWorthingtonCharcuterieSans/LauraWorthingtonCharcuterieSans.woff') format('woff'), url('../fonts/LauraWorthingtonCharcuterieSans/LauraWorthingtonCharcuterieSans.ttf') format('truetype'), url('../fonts/LauraWorthingtonCharcuterieSans/LauraWorthingtonCharcuterieSans.svg#LauraWorthingtonCharcuterieSans') format('svg');
+}
+@font-face {
+  font-family: 'LauraWorthingtonCharcuterieSerif';
+  src: url('../fonts/LauraWorthingtonCharcuterieSerif/LauraWorthingtonCharcuterieSerif.eot');
+  src: url('../fonts/LauraWorthingtonCharcuterieSerif/LauraWorthingtonCharcuterieSerif.eot') format('embedded-opentype'), url('../fonts/LauraWorthingtonCharcuterieSerif/LauraWorthingtonCharcuterieSerif.woff2') format('woff2'), url('../fonts/LauraWorthingtonCharcuterieSerif/LauraWorthingtonCharcuterieSerif.woff') format('woff'), url('../fonts/LauraWorthingtonCharcuterieSerif/LauraWorthingtonCharcuterieSerif.ttf') format('truetype'), url('../fonts/LauraWorthingtonCharcuterieSerif/LauraWorthingtonCharcuterieSerif.svg#LauraWorthingtonCharcuterieSerif') format('svg');
+}
+@font-face {
+  font-family: 'LauraWorthingtonCharcuterieSerifBold';
+  src: url('../fonts/LauraWorthingtonCharcuterieSerifBold/LauraWorthingtonCharcuterieSerifBold.eot');
+  src: url('../fonts/LauraWorthingtonCharcuterieSerifBold/LauraWorthingtonCharcuterieSerifBold.eot') format('embedded-opentype'), url('../fonts/LauraWorthingtonCharcuterieSerifBold/LauraWorthingtonCharcuterieSerifBold.woff2') format('woff2'), url('../fonts/LauraWorthingtonCharcuterieSerifBold/LauraWorthingtonCharcuterieSerifBold.woff') format('woff'), url('../fonts/LauraWorthingtonCharcuterieSerifBold/LauraWorthingtonCharcuterieSerifBold.ttf') format('truetype'), url('../fonts/LauraWorthingtonCharcuterieSerifBold/LauraWorthingtonCharcuterieSerifBold.svg#LauraWorthingtonCharcuterieSerifBold') format('svg');
 }
 /* --------------------------------------------------
  * Pixelgarage Mixins library
