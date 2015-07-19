@@ -71,12 +71,14 @@
             $item.css( 'z-index', 1 );
 
             if (proximity == 0) {
+                // hide description
+                $descr.stop(true,true).hide();
+
                 //
                 // reset active item
                 if ($item.is($activeItem)) {
                     if (!isMobile.any || (isMobile.any && Drupal.settings.proximityItemTouchCounter > 0)) {
                         // clear item effects (on mobile only on second click)
-                        $descr.stop(true,true).hide();
                         $activeItem = null;
                         Drupal.settings.proximityItemTouchCounter = 0;
                     } else {

@@ -1,0 +1,141 @@
+/*
+ *  piccoPage component
+ * --------------------------------------------------*/
+
+// Variables
+// -------------------------
+
+
+// Mixins
+// -------------------------
+
+// wysiwyg body
+.wysiwyg-body(@link-color) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: @pxl-text-font-bold;
+    font-size: 16px;
+  }
+  h1, h2 {
+    font-size: 18px;
+  }
+
+  div, p, tbody td {
+    font-family: @pxl-text-font-serif;
+    font-size: 16px;
+  }
+
+  pre, address {
+    font-family: @pxl-text-font-italics;
+    font-size: 16px;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 2px dashed @link-color;
+    background: none;
+  }
+
+  img, embed, video, audio, iframe {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+
+// General settings
+// -------------------------
+.node-piccopage {
+
+  .field-name-title {
+    margin-top: -60px;
+    border-bottom: 3px double @modal-text-color;
+  }
+
+  .field-name-body {
+    .wysiwyg-body(@modal-link-color);
+  }
+
+  .field-name-picco-menu-block {
+    // menu
+    padding: 20px 0;
+    border-bottom: 3px double @modal-text-color;
+
+    .view-piccomenu {
+      .view-content {
+        .panel-group {
+          margin: 0;
+
+          .panel {
+            border: none;
+            background: transparent none;
+            #pxl-mixins.box-shadow(none);
+
+            .panel-heading {
+              padding: 0 0 10px;
+              background-color: transparent;
+
+              .panel-title {
+                a {
+                  font-family: @pxl-text-font-bold;
+                  font-size: @font-size-large;
+                  color: @modal-text-color;
+
+                  &:hover, &.active {
+                    text-decoration: none;
+                  }
+
+                  span.fa {
+                    margin: 0 10px;
+                  }
+                }
+              }
+            }
+
+            .panel-collapse {
+              .panel-body {
+                padding: 0 0 20px;
+                border: none;
+
+                .views-field-body {
+                  .wysiwyg-body(@modal-link-color);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .field-name-picco-events-block {
+    // events
+    padding: 20px 0;
+    border-bottom: 3px double @modal-text-color;
+
+    .view-picco-events {
+      .view-content {
+        .node-piccoevent {
+          .field-name-field-date {
+
+          }
+
+          .field-name-field-picco-format {
+
+          }
+
+          .field-name-field-flyer {
+            img {
+              width: 100%;
+              max-width: 100%;
+              height:auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}

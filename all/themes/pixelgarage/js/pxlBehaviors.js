@@ -82,7 +82,9 @@
     Drupal.behaviors.audioController = {
         attach: function () {
             var audio = document.getElementById('picco-audio'),
-                $controls = $(document).find('div#audio-controls');
+                $controls = $(document).find('#audio-controls'),
+                $toggleImg = $controls.find('img.audio-play'),
+                imgUrl     = $toggleImg.attr('src');
 
             // click on play / pause button
             $controls.once('click', function () {
@@ -90,8 +92,10 @@
                     // toggle the play button
                     if (audio.paused || audio.ended) {
                         audio.play();
+                        $toggleImg.attr('src', imgUrl.replace('tonaus', 'tonan'));
                     } else {
                         audio.pause();
+                        $toggleImg.attr('src', imgUrl.replace('tonan', 'tonaus'));
                     }
 
                     // don't propagate click event further up

@@ -6,47 +6,10 @@
 // Variables
 // -------------------------
 @pe-bg-color: rgba(255,255,255,0.9);
-@pe-text-color: #888;
-@pe-link-color: @gray-dark;
-@pe-link-color-hover: @gray-light;
 
 
 // Mixins
 // -------------------------
-//
-// wysiwyg body
-.wysiwyg-body(@link-color) {
-  h1, h2, h3, h4, h5, h6 {
-    font-family: @pxl-text-font-bold;
-    font-size: 16px;
-  }
-  h1, h2 {
-    font-size: 18px;
-  }
-
-  p, tbody td {
-    font-family: @pxl-text-font;
-    font-size: 16px;
-  }
-
-  pre, address {
-    font-family: @pxl-text-font-italics;
-    font-size: 16px;
-  }
-
-  hr {
-    border: 0;
-    border-bottom: 2px dashed @link-color;
-    background: none;
-  }
-
-  img, embed, video, audio, iframe {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-}
-
 //
 // specific proximity item
 .specific-pe-item(@x; @y; @w: auto; @h: auto) {
@@ -59,19 +22,23 @@
     &.btn {
       padding: 0;
       vertical-align: top;
+      text-align: center;
     }
     &.btn:active,
-    &.btn.active {
+    &.btn.active,
+    &.btn:hover {
+      color: @text-color;
       box-shadow: none;
     }
 
     .views-field-field-image {
-      display: inline-block;
+      display: block;
       width: @w;
       height: @h;
     }
 
     .views-field-title {
+      display: block;
       font-size: @font-size-large;
       opacity: 1;
     }
@@ -136,13 +103,10 @@
     &.views-row-2 { /* Menu card */
       .specific-pe-item(12%, 65%, 70px);
     }
-    &.views-row-3 { /* About us */
-      .specific-pe-item(14%, 42%, 30px);
+    &.views-row-3 { /* Social links */
+      .specific-pe-item(8%, 30%, 70px);
     }
-    &.views-row-4 { /* Social links */
-      .specific-pe-item(8%, 30%, 24px);
-    }
-    &.views-row-5 { /* Kontakt */
+    &.views-row-4 { /* Kontakt */
       .specific-pe-item(20%, 36%, 42px);
     }
 
@@ -156,14 +120,10 @@
         .specific-pe-item(17%, 70%, 100px);
       }
 
-      &.views-row-3 { /* About us */
-        .specific-pe-item(18%, 60%, 40px);
+      &.views-row-3 { /* Social links */
+        .specific-pe-item(20%, 48%, 70px);
       }
-
-      &.views-row-4 { /* Social links */
-        .specific-pe-item(20%, 48%, 25px);
-      }
-      &.views-row-5 { /* Kontakt */
+      &.views-row-4 { /* Kontakt */
         .specific-pe-item(23%, 52%, 60px);
       }
     }
@@ -194,7 +154,7 @@
         border: none;
         border-radius: 0;
         box-shadow: none;
-        color: @pe-text-color;
+        color: @modal-text-color;
         background-color: transparent;
 
         .modal-header {
@@ -208,15 +168,17 @@
           }
 
           button.close {
+            position:relative;
             margin-top: -10px;
             font-family: @font-family-sans-serif;
             font-size: 30px;
             font-weight: 100;
-            color: @pe-link-color;
+            color: @modal-link-color;
             text-shadow: none;
+            z-index: 10;
 
             &:hover {
-              color: @pe-link-color-hover;
+              color: @modal-link-color-hover;
             }
           }
         }
@@ -228,33 +190,13 @@
 
           a {
             font-family: @pxl-text-font;
-            color: @pe-link-color;
+            color: @modal-link-color;
             outline: none;
 
             &:hover {
-              color: @pe-link-color-hover;
+              color: @modal-link-color-hover;
               outline: none;
             }
-          }
-
-          .field-name-field-date {
-
-          }
-
-          .field-name-field-picco-format {
-
-          }
-
-          .field-name-field-flyer {
-            img {
-              width: 100%;
-              max-width: 100%;
-              height:auto;
-            }
-          }
-
-          .field-name-body {
-            .wysiwyg-body(@pe-link-color);
           }
 
         }
@@ -265,7 +207,7 @@
           padding: 0;
           width: 100%;
 
-          border-top: 1px dotted @pe-link-color;
+          border-top: 1px dotted @modal-link-color;
 
           button {
             display: none;
