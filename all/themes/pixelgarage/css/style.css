@@ -8776,6 +8776,18 @@ form#user-login {
   right: 0;
   overflow: hidden;
 }
+.pe-container #proximity-ajax-loader {
+  position: relative;
+  top: 65%;
+  -webkit-transform: translateY(-65%);
+  -ms-transform: translateY(-65%);
+  transform: translateY(-65%);
+  width: 100%;
+  text-align: center;
+}
+.pe-container #proximity-ajax-loader img {
+  display: inline-block;
+}
 .pe-container .pe-background-image {
   display: none;
   width: 100%;
@@ -9070,11 +9082,12 @@ form#user-login {
   border-radius: 0;
   box-shadow: none;
   color: #888888;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: transparent;
 }
 .pe-container .modal .modal-dialog .modal-content .modal-header {
   width: 100%;
   border: none;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .pe-container .modal .modal-dialog .modal-content .modal-header .modal-title {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
@@ -9094,6 +9107,7 @@ form#user-login {
 .pe-container .modal .modal-dialog .modal-content .modal-body {
   padding: 20px;
   font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .pe-container .modal .modal-dialog .modal-content .modal-body a {
   font-family: 'LauraWorthingtonCharcuterieSans';
@@ -9148,9 +9162,34 @@ form#user-login {
 }
 .pe-container .modal .modal-dialog .modal-content .modal-footer {
   display: block;
-  width: 80%;
   margin: 0 auto;
-  border-top: 1px solid #333333;
+  padding: 0;
+  width: 100%;
+  border-top: 1px dotted #333333;
+}
+.pe-container .modal .modal-dialog .modal-content .modal-footer button {
+  display: none;
+}
+.pe-container .modal .modal-dialog .modal-content .modal-footer div.address {
+  margin: 5px 0;
+  text-align: center;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px black;
+  color: #fff;
+}
+.pe-container .modal .modal-dialog .modal-content .modal-footer div.address a {
+  text-decoration: underline;
+  color: #fff;
+}
+.pe-container .modal .modal-dialog .modal-content .modal-footer div.address a:hover,
+.pe-container .modal .modal-dialog .modal-content .modal-footer div.address a.active {
+  color: #ddd;
+  text-decoration: underline;
+}
+.pe-container .modal .modal-dialog .modal-content .modal-footer div.address:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
 }
 /*
  *  ShareThis component
@@ -9252,6 +9291,8 @@ body #background-wrapper img.bg-img {
   position: absolute;
   top: 0;
   left: 0;
+  width: auto;
+  height: auto;
   min-width: 100%;
   min-height: 100%;
   z-index: -100;
@@ -9270,6 +9311,8 @@ body #video-wrapper {
 body #video-wrapper video#picco-video {
   display: block;
   position: relative;
+  width: auto;
+  height: auto;
   min-width: 100%;
   min-height: 100%;
   outline: none;
@@ -9309,14 +9352,17 @@ body #audio-wrapper #audio-controls {
 body #audio-wrapper #audio-controls .audio-title {
   display: inline-block;
   vertical-align: middle;
-  font-family: 'LauraWorthingtonCharcuterieSansBold';
-  font-size: 14px;
+  font-family: 'LauraWorthingtonCharcuterieSerif';
+  font-size: 12px;
   text-align: center;
+}
+body #audio-wrapper #audio-controls .audio-title .beat-artist {
+  text-transform: uppercase;
 }
 body #audio-wrapper #audio-controls button#toggle-audio {
   display: inline-block;
   vertical-align: middle;
-  max-width: 50px;
+  max-width: 80px;
   border: none;
   outline: none;
   background: none;

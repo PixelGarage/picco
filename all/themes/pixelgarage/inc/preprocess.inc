@@ -71,3 +71,13 @@ function pixelgarage_preprocess_page(&$vars) {
   $vars['picco_logo'] = $image_path . '/picco_logo.png';
 }
 
+/**
+ * Pre-process function for theme hook views_view_proximity (implemented as views_view_proximity.tpl.php).
+ * This function prepares all necessary variables to create the markup for the proximity layout.
+ *
+ * @param $vars array   Variables used in the view theming.
+ */
+function pixelgarage_preprocess_views_view_proximity(&$vars) {
+  $vars['footer_item'] = 'Piccolo Giardino - Schöneggplatz 9 - 8004 Zürich - 043 317 91 10 - ' .
+    l('info@piccologiardino.ch', 'mailto:info@piccologiardino.ch', array('absolute' => true));
+}

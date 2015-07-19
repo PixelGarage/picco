@@ -13,7 +13,7 @@
         attach: function () {
             var video = document.getElementById('picco-video'),
                 $playPause = $(document).find('#picco-logo'),
-                $peDialog = $('.main-container .pe-container #pe-modal-dialog');
+                $peDialog = $('.main-container .pe-container .modal');
 
             // PREVENT VIDEO FROM PLAYING ON MOBILES
             if ($(window).width() < 480) {
@@ -41,7 +41,8 @@
                 $playPause.on('click', function () {
                     // toggle the play button
                     if (video.paused || video.ended) {
-                        video.play();
+                        window.location.href = '/';
+                        //video.play();
                     } else {
                         video.pause();
                     }
@@ -117,6 +118,26 @@
                 index = nextIndex;
 
             }, 7000);
+        }
+    }
+
+
+    Drupal.behaviors.backgroundSize = {
+        attach: function () {
+            var whRatio = 16 / 9;
+
+            $(window).off('.sizing');
+            $(window).on('load.sizing resize.sizing', function() {
+                var $window = $(window),
+                    $backgroundElements = $('#background-wrapper .bg-img, #video-wrapper video#picco-video'),
+                    whViewport = $window.width() / $window.height();
+
+                if (whViewport >= whRatio) {
+                    $backgroundElements.css({'width': '100%', 'height': 'auto'})
+                } else {
+                    $backgroundElements.css({'width': 'auto', 'height': '100%'})
+                }
+            });
         }
     }
 

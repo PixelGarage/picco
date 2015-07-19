@@ -184,8 +184,7 @@ function template_preprocess_views_view_proximity(&$vars) {
   $deep_link_base_url = '/' . PROXIMITY_ITEM_BASE_PATH . $pe_container_index . '/';
 
   $img_path = $base_url . '/' . drupal_get_path('module', 'proximity') . '/ajax-loader.gif';
-  $ajax_loading_html = t('<p>Loading content</p></br>');
-  $ajax_loading_html .= '<div id="proximity-ajax-loader"><img src="' . $img_path . '" alt="loading..."/></div>';
+  $ajax_loading_html = '<div id="proximity-ajax-loader"><img src="' . $img_path . '" alt="loading..."/></div>';
 
   // Setup proximity settings for specific container
   $container_id = 'pe-container-' . $pe_container_index;

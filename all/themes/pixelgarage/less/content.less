@@ -42,6 +42,8 @@ body {
       position: absolute;
       top: 0;
       left: 0;
+      width:auto;
+      height: auto;
       min-width: 100%;
       min-height: 100%;
       z-index: -100;
@@ -64,6 +66,8 @@ body {
     video#picco-video {
       display: block;
       position: relative;
+      width:auto;
+      height: auto;
       min-width: 100%;
       min-height: 100%;
       outline: none;
@@ -109,15 +113,19 @@ body {
       .audio-title {
         display: inline-block;
         vertical-align: middle;
-        font-family: @pxl-title-font;
-        font-size: @font-size-base;
+        font-family: @pxl-text-font-serif;
+        font-size: @font-size-small;
         text-align: center;
+
+        .beat-artist {
+          text-transform: uppercase;
+        }
       }
 
       button#toggle-audio {
         display: inline-block;
         vertical-align: middle;
-        max-width: 50px;
+        max-width: 80px;
         border: none;
         outline: none;
         background: none;

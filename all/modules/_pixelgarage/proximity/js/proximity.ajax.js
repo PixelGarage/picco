@@ -82,8 +82,9 @@
 
         //
         // set the loading indicator on the target and load target content via ajax
-        $target.html(settings.ajax_loading_html);
+        $container.append(settings.ajax_loading_html);
         $target.load(ajax_url, function( response, status, xhr ) {
+            $container.find('div').remove('#proximity-ajax-loader');
             if ( status == "error" ) {
                 var msg = "Content could not be loaded: ";
                 $target.html( msg + xhr.status + " " + xhr.statusText );
