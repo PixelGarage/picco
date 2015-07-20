@@ -9083,7 +9083,7 @@ form#user-login {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
   font-weight: 100;
-  color: #333333;
+  color: #888888;
   text-shadow: none;
   z-index: 10;
 }
@@ -9095,21 +9095,12 @@ form#user-login {
   font-size: 16px;
   background-color: rgba(255, 255, 255, 0.9);
 }
-.pe-container .modal .modal-dialog .modal-content .modal-body a {
-  font-family: 'LauraWorthingtonCharcuterieSans';
-  color: #333333;
-  outline: none;
-}
-.pe-container .modal .modal-dialog .modal-content .modal-body a:hover {
-  color: #777777;
-  outline: none;
-}
 .pe-container .modal .modal-dialog .modal-content .modal-footer {
   display: block;
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  border-top: 1px dotted #333333;
+  border-top: 1px dotted #888888;
 }
 .pe-container .modal .modal-dialog .modal-content .modal-footer button {
   display: none;
@@ -9138,9 +9129,25 @@ form#user-login {
 /*
  *  piccoPage component
  * --------------------------------------------------*/
+.node-piccopage a {
+  font-family: 'LauraWorthingtonCharcuterieSans';
+  text-decoration: underline;
+  color: #888888;
+  outline: none;
+}
+.node-piccopage a:hover {
+  text-decoration: none;
+  color: #777777;
+  outline: none;
+}
 .node-piccopage .field-name-title {
   margin-top: -60px;
+  font-family: 'LauraWorthingtonCharcuterieSansBold';
+  font-size: 30px;
   border-bottom: 3px double #888888;
+}
+.node-piccopage .field-name-body {
+  margin-top: 20px;
 }
 .node-piccopage .field-name-body h1,
 .node-piccopage .field-name-body h2,
@@ -9149,26 +9156,29 @@ form#user-login {
 .node-piccopage .field-name-body h5,
 .node-piccopage .field-name-body h6 {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
-  font-size: 16px;
+  font-size: 14px;
 }
 .node-piccopage .field-name-body h1,
 .node-piccopage .field-name-body h2 {
-  font-size: 18px;
+  font-size: 30px;
+}
+.node-piccopage .field-name-body h3 {
+  font-size: 21px;
 }
 .node-piccopage .field-name-body div,
 .node-piccopage .field-name-body p,
 .node-piccopage .field-name-body tbody td {
   font-family: 'LauraWorthingtonCharcuterieSerif';
-  font-size: 16px;
+  font-size: 14px;
 }
 .node-piccopage .field-name-body pre,
 .node-piccopage .field-name-body address {
   font-family: 'LauraWorthingtonCharcuterieSans';
-  font-size: 16px;
+  font-size: 14px;
 }
 .node-piccopage .field-name-body hr {
   border: 0;
-  border-bottom: 2px dashed #333333;
+  border-bottom: 2px dotted #888888;
   background: none;
 }
 .node-piccopage .field-name-body img,
@@ -9221,26 +9231,29 @@ form#user-login {
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h5,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h6 {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
-  font-size: 16px;
+  font-size: 14px;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h1,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h2 {
-  font-size: 18px;
+  font-size: 30px;
+}
+.node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h3 {
+  font-size: 21px;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body div,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body p,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body tbody td {
   font-family: 'LauraWorthingtonCharcuterieSerif';
-  font-size: 16px;
+  font-size: 14px;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body pre,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body address {
   font-family: 'LauraWorthingtonCharcuterieSans';
-  font-size: 16px;
+  font-size: 14px;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body hr {
   border: 0;
-  border-bottom: 2px dashed #333333;
+  border-bottom: 2px dotted #888888;
   background: none;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body img,

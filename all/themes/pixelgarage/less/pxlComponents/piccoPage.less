@@ -13,25 +13,28 @@
 .wysiwyg-body(@link-color) {
   h1, h2, h3, h4, h5, h6 {
     font-family: @pxl-text-font-bold;
-    font-size: 16px;
+    font-size: @font-size-base;
   }
   h1, h2 {
-    font-size: 18px;
+    font-size: @font-size-h2;
+  }
+  h3 {
+    font-size: @font-size-larger;
   }
 
   div, p, tbody td {
     font-family: @pxl-text-font-serif;
-    font-size: 16px;
+    font-size: @font-size-base;
   }
 
   pre, address {
     font-family: @pxl-text-font-italics;
-    font-size: 16px;
+    font-size: @font-size-base;
   }
 
   hr {
     border: 0;
-    border-bottom: 2px dashed @link-color;
+    border-bottom: 2px dotted @modal-text-color;
     background: none;
   }
 
@@ -48,12 +51,28 @@
 // -------------------------
 .node-piccopage {
 
+  a {
+    font-family: @pxl-text-font;
+    text-decoration: underline;
+    color: @modal-link-color;
+    outline: none;
+
+    &:hover {
+      text-decoration: none;
+      color: @modal-link-color-hover;
+      outline: none;
+    }
+  }
+
   .field-name-title {
     margin-top: -60px;
+    font-family: @pxl-text-font-bold;
+    font-size: @font-size-h2;
     border-bottom: 3px double @modal-text-color;
   }
 
   .field-name-body {
+    margin-top: 20px;
     .wysiwyg-body(@modal-link-color);
   }
 
