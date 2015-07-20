@@ -14,6 +14,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: @pxl-text-font-bold;
     font-size: @font-size-base;
+    font-weight: normal;
   }
   h1, h2 {
     font-size: @font-size-h2;
@@ -28,8 +29,9 @@
   }
 
   pre, address {
+    margin: 0 0 10px;
     font-family: @pxl-text-font-italics;
-    font-size: @font-size-base;
+    font-size: @font-size-small;
   }
 
   hr {
@@ -52,8 +54,9 @@
 .node-piccopage {
 
   a {
-    font-family: @pxl-text-font;
+    font-family: @pxl-text-font-serif;
     text-decoration: underline;
+    text-transform: lowercase;
     color: @modal-link-color;
     outline: none;
 
@@ -68,7 +71,7 @@
     margin-top: -60px;
     font-family: @pxl-text-font-bold;
     font-size: @font-size-h2;
-    border-bottom: 3px double @modal-text-color;
+    border-bottom: 2px dotted @modal-text-color;
   }
 
   .field-name-body {
@@ -79,7 +82,6 @@
   .field-name-picco-menu-block {
     // menu
     padding: 20px 0;
-    border-bottom: 3px double @modal-text-color;
 
     .view-piccomenu {
       .view-content {
@@ -100,6 +102,7 @@
                   font-family: @pxl-text-font-bold;
                   font-size: @font-size-large;
                   color: @modal-text-color;
+                  text-decoration: none;
 
                   &:hover, &.active {
                     text-decoration: none;
@@ -131,20 +134,43 @@
   .field-name-picco-events-block {
     // events
     padding: 20px 0;
-    border-bottom: 3px double @modal-text-color;
 
     .view-picco-events {
       .view-content {
         .node-piccoevent {
-          .field-name-field-date {
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 2px dotted @modal-text-color;
 
+          .field-name-body,
+          .field-name-body h2 {
+            margin-top: 0;
+          }
+
+          .field-name-field-date {
+            display: inline-block;
+            font-family: @pxl-text-font-bold;
+            font-size: @font-size-large;
+
+            .field-item:after {
+              display: inline-block;
+              content: '\00a0-\00a0'
+            }
           }
 
           .field-name-field-picco-format {
+            display: inline-block;
+            font-family: @pxl-text-font-bold;
+            font-size: @font-size-large;
 
+            .field-item:after {
+              display: inline-block;
+              content: ':'
+            }
           }
 
           .field-name-field-flyer {
+            margin-bottom: 20px;
             img {
               width: 100%;
               max-width: 100%;

@@ -8827,16 +8827,18 @@ form#user-login {
   padding: 0;
   vertical-align: top;
   text-align: center;
+  outline: none;
 }
 .pe-container .pe-item.views-row-1 a.btn:active,
 .pe-container .pe-item.views-row-1 a.btn.active,
 .pe-container .pe-item.views-row-1 a.btn:hover {
   color: #ffffff;
   box-shadow: none;
+  outline: none;
 }
 .pe-container .pe-item.views-row-1 a .views-field-field-image {
   display: block;
-  width: 100px;
+  width: 17.5vh;
   height: auto;
 }
 .pe-container .pe-item.views-row-1 a .views-field-title {
@@ -8855,16 +8857,18 @@ form#user-login {
   padding: 0;
   vertical-align: top;
   text-align: center;
+  outline: none;
 }
 .pe-container .pe-item.views-row-2 a.btn:active,
 .pe-container .pe-item.views-row-2 a.btn.active,
 .pe-container .pe-item.views-row-2 a.btn:hover {
   color: #ffffff;
   box-shadow: none;
+  outline: none;
 }
 .pe-container .pe-item.views-row-2 a .views-field-field-image {
   display: block;
-  width: 70px;
+  width: 7vh;
   height: auto;
 }
 .pe-container .pe-item.views-row-2 a .views-field-title {
@@ -8883,16 +8887,18 @@ form#user-login {
   padding: 0;
   vertical-align: top;
   text-align: center;
+  outline: none;
 }
 .pe-container .pe-item.views-row-3 a.btn:active,
 .pe-container .pe-item.views-row-3 a.btn.active,
 .pe-container .pe-item.views-row-3 a.btn:hover {
   color: #ffffff;
   box-shadow: none;
+  outline: none;
 }
 .pe-container .pe-item.views-row-3 a .views-field-field-image {
   display: block;
-  width: 70px;
+  width: 7.5vh;
   height: auto;
 }
 .pe-container .pe-item.views-row-3 a .views-field-title {
@@ -8911,16 +8917,18 @@ form#user-login {
   padding: 0;
   vertical-align: top;
   text-align: center;
+  outline: none;
 }
 .pe-container .pe-item.views-row-4 a.btn:active,
 .pe-container .pe-item.views-row-4 a.btn.active,
 .pe-container .pe-item.views-row-4 a.btn:hover {
   color: #ffffff;
   box-shadow: none;
+  outline: none;
 }
 .pe-container .pe-item.views-row-4 a .views-field-field-image {
   display: block;
-  width: 42px;
+  width: 7.5vh;
   height: auto;
 }
 .pe-container .pe-item.views-row-4 a .views-field-title {
@@ -8932,24 +8940,26 @@ form#user-login {
   .pe-container .pe-item.views-row-1 {
     /* Agenda */
     /* specific proximity event item */
-    top: 60%;
-    right: 28%;
+    top: 65%;
+    right: 12%;
     width: auto !important;
   }
   .pe-container .pe-item.views-row-1 a.btn {
     padding: 0;
     vertical-align: top;
     text-align: center;
+    outline: none;
   }
   .pe-container .pe-item.views-row-1 a.btn:active,
   .pe-container .pe-item.views-row-1 a.btn.active,
   .pe-container .pe-item.views-row-1 a.btn:hover {
     color: #ffffff;
     box-shadow: none;
+    outline: none;
   }
   .pe-container .pe-item.views-row-1 a .views-field-field-image {
     display: block;
-    width: 140px;
+    width: 17.5vh;
     height: auto;
   }
   .pe-container .pe-item.views-row-1 a .views-field-title {
@@ -8960,24 +8970,26 @@ form#user-login {
   .pe-container .pe-item.views-row-2 {
     /* Menu card */
     /* specific proximity event item */
-    top: 70%;
-    right: 17%;
+    top: 56%;
+    right: 23%;
     width: auto !important;
   }
   .pe-container .pe-item.views-row-2 a.btn {
     padding: 0;
     vertical-align: top;
     text-align: center;
+    outline: none;
   }
   .pe-container .pe-item.views-row-2 a.btn:active,
   .pe-container .pe-item.views-row-2 a.btn.active,
   .pe-container .pe-item.views-row-2 a.btn:hover {
     color: #ffffff;
     box-shadow: none;
+    outline: none;
   }
   .pe-container .pe-item.views-row-2 a .views-field-field-image {
     display: block;
-    width: 100px;
+    width: 7vh;
     height: auto;
   }
   .pe-container .pe-item.views-row-2 a .views-field-title {
@@ -8988,24 +9000,26 @@ form#user-login {
   .pe-container .pe-item.views-row-3 {
     /* Social links */
     /* specific proximity event item */
-    top: 48%;
-    right: 20%;
+    top: 57%;
+    right: 10%;
     width: auto !important;
   }
   .pe-container .pe-item.views-row-3 a.btn {
     padding: 0;
     vertical-align: top;
     text-align: center;
+    outline: none;
   }
   .pe-container .pe-item.views-row-3 a.btn:active,
   .pe-container .pe-item.views-row-3 a.btn.active,
   .pe-container .pe-item.views-row-3 a.btn:hover {
     color: #ffffff;
     box-shadow: none;
+    outline: none;
   }
   .pe-container .pe-item.views-row-3 a .views-field-field-image {
     display: block;
-    width: 70px;
+    width: 7.5vh;
     height: auto;
   }
   .pe-container .pe-item.views-row-3 a .views-field-title {
@@ -9016,24 +9030,26 @@ form#user-login {
   .pe-container .pe-item.views-row-4 {
     /* Kontakt */
     /* specific proximity event item */
-    top: 52%;
-    right: 23%;
+    top: 50%;
+    right: 19%;
     width: auto !important;
   }
   .pe-container .pe-item.views-row-4 a.btn {
     padding: 0;
     vertical-align: top;
     text-align: center;
+    outline: none;
   }
   .pe-container .pe-item.views-row-4 a.btn:active,
   .pe-container .pe-item.views-row-4 a.btn.active,
   .pe-container .pe-item.views-row-4 a.btn:hover {
     color: #ffffff;
     box-shadow: none;
+    outline: none;
   }
   .pe-container .pe-item.views-row-4 a .views-field-field-image {
     display: block;
-    width: 60px;
+    width: 7.5vh;
     height: auto;
   }
   .pe-container .pe-item.views-row-4 a .views-field-title {
@@ -9051,12 +9067,14 @@ form#user-login {
   top: 0;
   margin: 0 ;
   width: 90%;
+  min-width: 90%;
   max-height: 90vh;
 }
 @media screen and (min-width: 768px) {
   .pe-container .modal .modal-dialog {
     left: 15%;
     width: 35%;
+    min-width: 350px;
     max-height: 60vh;
   }
 }
@@ -9100,6 +9118,7 @@ form#user-login {
   margin: 0 auto;
   padding: 0;
   width: 100%;
+  font-family: 'LauraWorthingtonCharcuterieSerif';
   border-top: 1px dotted #888888;
 }
 .pe-container .modal .modal-dialog .modal-content .modal-footer button {
@@ -9109,11 +9128,12 @@ form#user-login {
   margin: 5px 0;
   text-align: center;
   font-size: 12px;
-  text-shadow: 1px 1px 1px black;
   color: #fff;
 }
 .pe-container .modal .modal-dialog .modal-content .modal-footer div.address a {
-  text-decoration: underline;
+  font-family: 'LauraWorthingtonCharcuterieSerif';
+  text-transform: lowercase;
+  text-decoration: none;
   color: #fff;
 }
 .pe-container .modal .modal-dialog .modal-content .modal-footer div.address a:hover,
@@ -9130,8 +9150,9 @@ form#user-login {
  *  piccoPage component
  * --------------------------------------------------*/
 .node-piccopage a {
-  font-family: 'LauraWorthingtonCharcuterieSans';
+  font-family: 'LauraWorthingtonCharcuterieSerif';
   text-decoration: underline;
+  text-transform: lowercase;
   color: #888888;
   outline: none;
 }
@@ -9144,7 +9165,7 @@ form#user-login {
   margin-top: -60px;
   font-family: 'LauraWorthingtonCharcuterieSansBold';
   font-size: 30px;
-  border-bottom: 3px double #888888;
+  border-bottom: 2px dotted #888888;
 }
 .node-piccopage .field-name-body {
   margin-top: 20px;
@@ -9157,6 +9178,7 @@ form#user-login {
 .node-piccopage .field-name-body h6 {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
   font-size: 14px;
+  font-weight: normal;
 }
 .node-piccopage .field-name-body h1,
 .node-piccopage .field-name-body h2 {
@@ -9173,8 +9195,9 @@ form#user-login {
 }
 .node-piccopage .field-name-body pre,
 .node-piccopage .field-name-body address {
-  font-family: 'LauraWorthingtonCharcuterieSans';
-  font-size: 14px;
+  margin: 0 0 10px;
+  font-family: 'LauraWorthingtonCharcuterieSerif';
+  font-size: 12px;
 }
 .node-piccopage .field-name-body hr {
   border: 0;
@@ -9192,7 +9215,6 @@ form#user-login {
 }
 .node-piccopage .field-name-picco-menu-block {
   padding: 20px 0;
-  border-bottom: 3px double #888888;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group {
   margin: 0;
@@ -9212,6 +9234,7 @@ form#user-login {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
   font-size: 18px;
   color: #888888;
+  text-decoration: none;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-heading .panel-title a:hover,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-heading .panel-title a.active {
@@ -9232,6 +9255,7 @@ form#user-login {
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h6 {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
   font-size: 14px;
+  font-weight: normal;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h1,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body h2 {
@@ -9248,8 +9272,9 @@ form#user-login {
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body pre,
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body address {
-  font-family: 'LauraWorthingtonCharcuterieSans';
-  font-size: 14px;
+  margin: 0 0 10px;
+  font-family: 'LauraWorthingtonCharcuterieSerif';
+  font-size: 12px;
 }
 .node-piccopage .field-name-picco-menu-block .view-piccomenu .view-content .panel-group .panel .panel-collapse .panel-body .views-field-body hr {
   border: 0;
@@ -9267,7 +9292,36 @@ form#user-login {
 }
 .node-piccopage .field-name-picco-events-block {
   padding: 20px 0;
-  border-bottom: 3px double #888888;
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px dotted #888888;
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-body,
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-body h2 {
+  margin-top: 0;
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-field-date {
+  display: inline-block;
+  font-family: 'LauraWorthingtonCharcuterieSansBold';
+  font-size: 18px;
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-field-date .field-item:after {
+  display: inline-block;
+  content: '\00a0-\00a0';
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-field-picco-format {
+  display: inline-block;
+  font-family: 'LauraWorthingtonCharcuterieSansBold';
+  font-size: 18px;
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-field-picco-format .field-item:after {
+  display: inline-block;
+  content: ':';
+}
+.node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-field-flyer {
+  margin-bottom: 20px;
 }
 .node-piccopage .field-name-picco-events-block .view-picco-events .view-content .node-piccoevent .field-name-field-flyer img {
   width: 100%;
@@ -9437,15 +9491,16 @@ body #audio-wrapper #audio-controls .audio-title {
   vertical-align: middle;
   font-family: 'LauraWorthingtonCharcuterieSerif';
   font-size: 12px;
-  text-align: center;
+  text-align: right;
 }
 body #audio-wrapper #audio-controls .audio-title .beat-artist {
   text-transform: uppercase;
+  text-align: right;
 }
 body #audio-wrapper #audio-controls button#toggle-audio {
   display: inline-block;
   vertical-align: middle;
-  max-width: 50px;
+  max-width: 35px;
   border: none;
   outline: none;
   background: none;
@@ -9488,9 +9543,18 @@ body .main-container .row section .region-content #block-block-1 {
 body .main-container .row section .region-content #block-block-1 img {
   cursor: pointer;
   display: inline-block;
+  margin-left: 0;
   width: 20%;
   min-width: 280px;
   height: auto;
+}
+@media screen and (min-width: 768px) {
+  body .main-container .row section .region-content #block-block-1 {
+    text-align: left;
+  }
+  body .main-container .row section .region-content #block-block-1 img {
+    margin-left: 53%;
+  }
 }
 body.front .main-container #block-block-1 {
   z-index: 20;

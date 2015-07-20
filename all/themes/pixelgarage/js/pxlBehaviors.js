@@ -145,4 +145,23 @@
         }
     }
 
+    Drupal.behaviors.accordion = {
+        attach: function () {
+            var $accordions = $('.node-piccopage .views-bootstrap-accordion-plugin-style');
+
+            $accordions.once('icon', function() {
+                $accordions.on('show.bs.collapse', '.collapse', function() {
+                    // accordion is opened
+                    $(this).parent().find('span.fa').removeClass('fa-angle-down').addClass('fa-angle-up');
+
+                });
+                $accordions.on('hide.bs.collapse', '.collapse', function() {
+                    // accordion is hidden
+                    $(this).parent().find('span.fa').removeClass('fa-angle-up').addClass('fa-angle-down');
+                });
+
+            });
+        }
+    }
+
 })(jQuery);

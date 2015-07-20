@@ -115,17 +115,18 @@ body {
         vertical-align: middle;
         font-family: @pxl-text-font-serif;
         font-size: @font-size-small;
-        text-align: center;
+        text-align: right;
 
         .beat-artist {
           text-transform: uppercase;
+          text-align: right;
         }
       }
 
       button#toggle-audio {
         display: inline-block;
         vertical-align: middle;
-        max-width: 50px;
+        max-width: 35px;
         border: none;
         outline: none;
         background: none;
@@ -174,10 +175,20 @@ body {
             img {
               cursor: pointer;
               display: inline-block;
+              margin-left: 0;
               width: 20%;
               min-width: 280px;
               height: auto;
             }
+
+            @media @tablet {
+              text-align: left;
+
+              img {
+                margin-left: 53%;
+              }
+            }
+
           }
         }
 
