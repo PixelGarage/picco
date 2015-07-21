@@ -9556,9 +9556,6 @@ body .main-container .row section .region-content #block-block-1 img {
     margin-left: 53%;
   }
 }
-body.front .main-container #block-block-1 {
-  z-index: 20;
-}
 body .footer {
   display: none;
 }

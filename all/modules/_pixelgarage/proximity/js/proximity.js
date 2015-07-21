@@ -77,13 +77,8 @@
                 //
                 // reset active item
                 if ($item.is($activeItem)) {
-                    if (!isMobile.any || (isMobile.any && Drupal.settings.proximityItemTouchCounter > 0)) {
-                        // clear item effects (on mobile only on second click)
-                        $activeItem = null;
-                        Drupal.settings.proximityItemTouchCounter = 0;
-                    } else {
-                        Drupal.settings.proximityItemTouchCounter++;
-                    }
+                    $activeItem = null;
+                    Drupal.settings.proximityItemTouchCounter = 0;
                 }
 
             }
