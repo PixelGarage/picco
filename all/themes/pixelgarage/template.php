@@ -31,7 +31,7 @@ include_once($pixelgarage_path . '/inc/theme.inc');        // all theme override
 function pixelgarage_proximity_ajax_load_params_alter($container_index, $view_result, &$ajax_load_params) {
   // Return the node id as ajax parameter for each item.
   foreach ($view_result as $id => $item) {
-    $ajax_load_params[$id] = $item->nid;
+    $ajax_load_params[$id] = ($item->nid == 21) ? $item->field_field_external_link[0]['raw']['url'] : (int)$item->nid;
   }
 }
 

@@ -19,15 +19,15 @@
   width: auto !important;
 
   a {
-    &.btn {
-      padding: 0;
-      vertical-align: top;
-      text-align: center;
-      outline: none;
-    }
-    &.btn:active,
-    &.btn.active,
-    &.btn:hover {
+    padding: 0;
+    vertical-align: top;
+    text-align: center;
+    outline: none;
+
+    &:focus,
+    &:active,
+    &.active,
+    &:hover {
       color: @text-color;
       box-shadow: none;
       outline: none;

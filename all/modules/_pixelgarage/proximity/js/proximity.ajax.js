@@ -182,7 +182,7 @@
 
                 var $container  = $('#' + container),
                     $dialog     = $container.find('.modal'),
-                    $items      = $container.find(settings.item_selector),
+                    $items      = $container.find('.pe-item-ajax'),
                     transDuration = parseInt(settings.trans_duration);
 
 

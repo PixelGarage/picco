@@ -10,7 +10,7 @@
 
   <?php foreach ($rows as $id => $row): ?>
 
-    <div class="pe-item <?php print 'pe-item-' . $ajax_load_params[$id]; ?> <?php if ($classes_array[$id]) print $classes_array[$id]; ?>" style="margin-left: -4px; width: <?php print $percentage_width; ?>%">
+    <div class="pe-item pe-item-ajax <?php print 'pe-item-' . $ajax_load_params[$id]; ?> <?php if ($classes_array[$id]) print $classes_array[$id]; ?>" style="margin-left: -4px; width: <?php print $percentage_width; ?>%">
       <div class="pe-item-inner">
         <!-- modal trigger -->
         <a class="btn" role="button" href="<?php print $deep_link_base_url . $ajax_load_params[$id]; ?>" data-ajax-load-param="<?php print $ajax_load_params[$id]; ?>" data-toggle="modal" data-target="#pe-modal-dialog-<?php print $container_index; ?>" >
