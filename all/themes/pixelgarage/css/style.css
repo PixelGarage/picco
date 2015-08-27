@@ -9159,7 +9159,7 @@ form#user-login {
 .pe-container .modal .modal-dialog .modal-content .modal-header {
   width: 100%;
   border: none;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.96);
 }
 .pe-container .modal .modal-dialog .modal-content .modal-header .modal-title {
   font-family: 'LauraWorthingtonCharcuterieSansBold';
@@ -9181,7 +9181,7 @@ form#user-login {
 .pe-container .modal .modal-dialog .modal-content .modal-body {
   padding: 20px;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.96);
 }
 .pe-container .modal .modal-dialog .modal-content .modal-footer {
   display: block;

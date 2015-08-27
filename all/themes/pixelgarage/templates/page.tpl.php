@@ -132,7 +132,7 @@
 
 <!-- background audio -->
 <div id="audio-wrapper">
-  <audio id="picco-audio" title="Piccolo Giardino beat" preload="auto">
+  <audio id="picco-audio" title="Piccolo Giardino beat" preload="auto" autoplay>
     <?php if (!empty($beat_mime_0) && !empty($beat_src_0)): ?><source src="<?php print $beat_src_0; ?>" type="<?php print $beat_mime_0; ?>" /><?php endif; ?>
     <?php if (!empty($beat_mime_1) && !empty($beat_src_1)): ?><source src="<?php print $beat_src_1; ?>" type="<?php print $beat_mime_1; ?>" /><?php endif; ?>
     <?php if (!empty($beat_mime_2) && !empty($beat_src_2)): ?><source src="<?php print $beat_src_2; ?>" type="<?php print $beat_mime_2; ?>" /><?php endif; ?>

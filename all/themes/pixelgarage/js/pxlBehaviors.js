@@ -92,10 +92,10 @@
                     // toggle the play button
                     if (audio.paused || audio.ended) {
                         audio.play();
-                        $toggleImg.attr('src', imgUrl.replace('tonaus', 'tonan'));
+                        $toggleImg.attr('src', imgUrl.replace('tonan', 'tonaus'));
                     } else {
                         audio.pause();
-                        $toggleImg.attr('src', imgUrl.replace('tonan', 'tonaus'));
+                        $toggleImg.attr('src', imgUrl.replace('tonaus', 'tonan'));
                     }
 
                     // don't propagate click event further up
