@@ -209,6 +209,8 @@ function template_preprocess_views_view_proximity(&$vars) {
         'ajax_loading_html' => $ajax_loading_html,
         'deep_link_base_url' => $base_url . $deep_link_base_url,
         'deep_link_request' => !empty($rendered_item),
+        // mobile behavior
+        'mobile_behavior' => $options['proximity_mobile_behavior']
       ),
     ),
   );

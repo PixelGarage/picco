@@ -15,8 +15,7 @@ class views_plugin_style_proximity extends views_plugin_style {
     // define default options
     $default_options = array(
       'proximity_content_container' => 'modal_fix',
-      'proximity_position_randomly' => 1,
-      'proximity_random_grid_cell_size' => 40,
+      'proximity_mobile_behavior' => 'touch_two',
       'proximity_item_selector' => '',
       'proximity_desc_selector' => '',
       'proximity_start_scale' => 1.0,
@@ -25,6 +24,8 @@ class views_plugin_style_proximity extends views_plugin_style {
       'proximity_end_opacity' => 0.9,
       'proximity_extent' => 80.0,
       'proximity_trans_duration' => 400,
+      'proximity_position_randomly' => 1,
+      'proximity_random_grid_cell_size' => 40,
     );
 
     // Set default values for proximity
@@ -80,21 +81,17 @@ class views_plugin_style_proximity extends views_plugin_style {
       '#weight' => -2,
       '#fieldset' => 'proximity',
     );
-    $form['proximity_position_randomly'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Position items randomly'),
-      '#description' => t('Define, if the proximity items are distributed randomly in the container (default). Deselecting this property means, that the items have to be positioned with css.'),
-      '#default_value' => $default_values['proximity_position_randomly'],
+    $form['proximity_mobile_behavior'] = array(
+      '#type' => 'select',
+      '#title' => t('Select mobile behavior'),
+      '#options' => array(
+        'touch_one' => t('One touch'),
+        'touch_two' => t('Two touch'),
+      ),
+      '#description' => t('Select one of the given mobile behaviors: "One touch" opens dialog on first touch, "Two touch" on the second touch.'),
+      '#default_value' => $default_values['proximity_mobile_behavior'],
+      '#required' => true,
       '#weight' => -1,
-      '#fieldset' => 'proximity',
-    );
-    $form['proximity_random_grid_cell_size'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Random grid cell size'),
-      '#description' => t('Define the cell size of the grid used for random distribution (default = 40px).'),
-      '#default_value' => $default_values['proximity_random_grid_cell_size'],
-      '#size' => 5,
-      '#weight' => 0,
       '#fieldset' => 'proximity',
     );
     $form['proximity_item_selector'] = array(
@@ -170,6 +167,23 @@ class views_plugin_style_proximity extends views_plugin_style {
       '#size' => 10,
       '#maxlength' => 5,
       '#weight' => 8,
+      '#fieldset' => 'proximity',
+    );
+    $form['proximity_position_randomly'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Position items randomly'),
+      '#description' => t('Define, if the proximity items are distributed randomly in the container (default). Deselecting this property means, that the items have to be positioned with css.'),
+      '#default_value' => $default_values['proximity_position_randomly'],
+      '#weight' => 9,
+      '#fieldset' => 'proximity',
+    );
+    $form['proximity_random_grid_cell_size'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Random grid cell size'),
+      '#description' => t('Define the cell size of the grid used for random distribution (default = 40px).'),
+      '#default_value' => $default_values['proximity_random_grid_cell_size'],
+      '#size' => 5,
+      '#weight' =>10,
       '#fieldset' => 'proximity',
     );
 

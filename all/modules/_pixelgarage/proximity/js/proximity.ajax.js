@@ -38,7 +38,9 @@
      function loadItemContent(container_index, param) {
         //
         // Mobile devices: load item content on second touch
-        if (isMobile.any && Drupal.settings.proximityItemTouchCounter == 0) {
+        var mobileBehavior = Drupal.settings.proximity['pe-container-' + container_index].mobile_behavior;
+
+        if (isMobile.any && mobileBehavior == 'touch_two' && Drupal.settings.proximityItemTouchCounter == 0) {
             return;
         }
 
