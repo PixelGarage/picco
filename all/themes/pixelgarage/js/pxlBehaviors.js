@@ -104,7 +104,7 @@
             });
 
         }
-    }
+    };
 
     Drupal.behaviors.backgroundImage = {
         attach: function () {
@@ -123,7 +123,7 @@
 
             }, 7000);
         }
-    }
+    };
 
 
     Drupal.behaviors.backgroundSize = {
@@ -143,7 +143,7 @@
                 }
             });
         }
-    }
+    };
 
     Drupal.behaviors.accordion = {
         attach: function () {
@@ -162,6 +162,27 @@
 
             });
         }
-    }
+    };
+
+    Drupal.behaviors.toggleLogoOnDialog = {
+        attach: function() {
+            // Iterate through all proximity container instances
+            $.each(Drupal.settings.proximity, function (container, settings) {
+
+                var $container  = $('#' + container),
+                    $dialog     = $container.find('.modal'),
+                    $logo       = $('.main-container .picco-logo');
+
+                $dialog.once('toggle-logo', function() {
+                    $dialog.on('show.bs.modal', function() {
+                        $logo.hide();
+                    });
+                    $dialog.on('hide.bs.modal', function() {
+                        $logo.show();
+                    });
+                });
+            });
+        }
+    };
 
 })(jQuery);
