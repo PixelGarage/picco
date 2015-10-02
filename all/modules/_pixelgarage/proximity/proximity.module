@@ -11,12 +11,18 @@ define('PROXIMITY_ITEM_NOT_FOUND', 1);
 
 
 /**
- * Holds the base path for an item page callback. Use a 'unique' string to prevent conflicts with generated url's.
+ * Holds the base path of an item's url.
+ *
+ * Deep links are the visible url's that load a specific proximity item's content,
+ * either with a full page request or an ajax callback.
+ * Use a 'unique' string to prevent conflicts with automatically generated url's.
  */
-define('PROXIMITY_ITEM_BASE_PATH', 'proximity-container-item/');
+define('PROXIMITY_ITEM_URL_BASE_PATH', 'proximity-container-item/');
 
 /**
- * Holds the base path for an item ajax callback. Use a 'unique' string to prevent conflicts with generated url's.
+ * Holds the base path for an item ajax callback.
+ *
+ * Use a 'unique' string to prevent conflicts with automatically generated url's.
  */
 define('PROXIMITY_ITEM_AJAX_PATH', 'ajax/pe-container-item/');
 
@@ -36,7 +42,7 @@ $page_callback_container = false;
  */
 function proximity_menu() {
   // handles item full page request
-  $items[PROXIMITY_ITEM_BASE_PATH . '%/%'] = array(
+  $items[PROXIMITY_ITEM_URL_BASE_PATH . '%/%'] = array(
     'page callback' => 'proximity_page_callback',
     'page arguments' => array(1,2),
     'type' => MENU_CALLBACK,
@@ -71,67 +77,44 @@ function proximity_page_callback($container_index, $param) {
  * Page callback function for AJAX request.
  */
 function proximity_ajax_callback($container_index, $param) {
-  $render_item = PROXIMITY_ITEM_NOT_FOUND;
-  drupal_alter('proximity_ajax_render_item', $container_index, $param, $render_item);
-
-  return $render_item;
+  // output rendered item or error message
+  drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
+  print _proximity_item_render($container_index, $param);
+  drupal_exit();
 }
 
 /**
- * A specific proximity delivery callback that doesn't return a whole rendered page but instead returns
- * only the requested content of the ajax call.
+ * Renders the specific item.
  *
- * @param $page_callback_result mixed   Return value of the page callback function.
+ * @param $container_index
+ * @param $param
+ *
+ * @return null|string
+ *  Rendered item.
  */
-function proximity_ajax_delivery_callback($page_callback_result) {
-  if (isset($page_callback_result) && is_null(drupal_get_http_header('Content-Type'))) {
-    drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
-  }
+function _proximity_item_render($container_index, $param) {
+  $render_item = PROXIMITY_ITEM_NOT_FOUND;
+  drupal_alter('proximity_ajax_render_item', $container_index, $param, $render_item);
 
-  // Send appropriate HTTP-Header for browsers and search engines.
-  global $language;
-  drupal_add_http_header('Content-Language', $language->language);
-
-  // Menu status constants are integers; page content is a string or array.
-  $content = '';
-  if (is_int($page_callback_result)) {
-    switch ($page_callback_result) {
-      case MENU_NOT_FOUND:
-        drupal_add_http_header('Status', '404 Not Found');
-
-        $content = t("Page not found");
-        break;
-
-      case MENU_ACCESS_DENIED:
-        drupal_add_http_header('Status', '403 Forbidden');
-
-        $content = t("Access denied");
-        break;
-
-      case MENU_SITE_OFFLINE:
-        print t('Site under maintenance');
-        break;
-
+  // Error status are integers; page content is a string or render array.
+  $output = '';
+  if (is_int($render_item)) {
+    switch ($render_item) {
       case PROXIMITY_ITEM_NOT_FOUND:
-        $content = t('Proximity item content not found');
+        $output = t('Proximity item content not found');
         break;
 
       default:
-        $content = t('Unknown error');
+        $output = t('Unknown error');
         break;
     }
-  } elseif (isset($page_callback_result)) {
-    // print the requested content as simple html document
-    $content = is_string($page_callback_result) ? $page_callback_result : drupal_render($page_callback_result);
+  } elseif (isset($render_item)) {
+    // render the requested content
+    $output = render($render_item);
   }
 
-  // print html (only content will be added to target element)
-  $html = '<html><head><title></title></head>';
-  $html .= '<body class="ajax-loaded-proximity-item">' . $content . '</body></html>';
-  print $html;
-  drupal_page_footer();
+  return $output;
 }
-
 
 
 /* -----------------------------------------------------------------
@@ -153,6 +136,7 @@ function proximity_views_api() {
  */
 function template_preprocess_views_view_proximity(&$vars) {
   // Run preprocess function for unformatted style
+  static $pe_container_index = 0;
   template_preprocess_views_view_unformatted($vars);
 
   // get saved view options
@@ -160,15 +144,14 @@ function template_preprocess_views_view_proximity(&$vars) {
   $options = $vars['options'];
 
   //
-  // render the specific item in the given proximity container (index)
-  // in case of a deep item link callback
+  // Full page callback:
+  // render the specific proximity item, if the full page is requested
   global $page_callback_param, $page_callback_container;
-  static $pe_container_index = 0;
   $rendered_item = null;
 
-  // deep link callback: render the requested item if the current container equals the one of the deep link
+  // check if the current container equals the one of the deep link
   if ($page_callback_param && $pe_container_index == $page_callback_container) {
-    $rendered_item = proximity_ajax_callback($page_callback_container, $page_callback_param);
+    $rendered_item = _proximity_item_render($page_callback_container, $page_callback_param);
 
     // reset global parameter
     $page_callback_param = false;
@@ -176,12 +159,12 @@ function template_preprocess_views_view_proximity(&$vars) {
   }
   $vars['rendered_item'] = $rendered_item;
 
-
+  //
   // add additional proximity options for use in javascript
   global $base_url;
   $desc_selector = !empty($options['proximity_desc_selector']) ? $options['proximity_desc_selector'] : '';
   $ajax_base_url = $base_url . '/' . PROXIMITY_ITEM_AJAX_PATH . $pe_container_index . '/';
-  $deep_link_base_url = '/' . PROXIMITY_ITEM_BASE_PATH . $pe_container_index . '/';
+  $item_base_url = '/' . PROXIMITY_ITEM_URL_BASE_PATH . $pe_container_index . '/';
 
   $img_path = $base_url . '/' . drupal_get_path('module', 'proximity') . '/ajax-loader.gif';
   $ajax_loading_html = '<div id="proximity-ajax-loader"><img src="' . $img_path . '" alt="loading..."/></div>';
@@ -189,8 +172,8 @@ function template_preprocess_views_view_proximity(&$vars) {
   // Setup proximity settings for specific container
   $container_id = 'pe-container-' . $pe_container_index;
   $js_settings = array(
+    'proximity_url_base_path' => PROXIMITY_ITEM_URL_BASE_PATH,
     'proximity' => array(
-      'deep_link_base_path' => PROXIMITY_ITEM_BASE_PATH,
       $container_id => array(
         // proximity parameter
         'position_randomly' => $options['proximity_position_randomly'],
@@ -203,12 +186,14 @@ function template_preprocess_views_view_proximity(&$vars) {
         'end_opacity' => $options['proximity_end_opacity'],
         'extent' => $options['proximity_extent'],
         'trans_duration' => $options['proximity_trans_duration'],
+
         // ajax parameter
         'ajax_container' => $options['proximity_content_container'],
         'ajax_base_url' => $ajax_base_url,
+        'item_base_url' => $base_url . $item_base_url,
         'ajax_loading_html' => $ajax_loading_html,
-        'deep_link_base_url' => $base_url . $deep_link_base_url,
-        'deep_link_request' => !empty($rendered_item),
+        'ajax_request' => empty($rendered_item),
+
         // mobile behavior
         'mobile_behavior' => $options['proximity_mobile_behavior']
       ),
@@ -217,14 +202,17 @@ function template_preprocess_views_view_proximity(&$vars) {
   $vars['container_id'] = $container_id;
   $vars['container_index'] = $pe_container_index++;
 
-  // create ajax load array (a parameter per item to be added to the ajax url)
+  // initialize ajax load param array (index of item)
+  // the item load parameter is appended to the ajax url to identify the content to be loaded
   $ajax_load_params = array();
   foreach ($view->result as $id => $item) {
     $ajax_load_params[$id] = $id;
   }
+
+  // allow others to alter load params
   drupal_alter('proximity_ajax_load_params', $pe_container_index, $view->result, $ajax_load_params);
   $vars['ajax_load_params'] = $ajax_load_params;
-  $vars['deep_link_base_url'] = $deep_link_base_url;
+  $vars['item_base_url'] = $item_base_url;
 
   // define percentage width of items (floating grid layout)
   $count = count($view->result);
@@ -236,8 +224,9 @@ function template_preprocess_views_view_proximity(&$vars) {
   // Apply the needed files and js settings
   $path = drupal_get_path('module', 'proximity');
   drupal_add_js($js_settings, 'setting');
-  drupal_add_js($path . '/js/jquery.proximity.js');
   drupal_add_js($path . '/js/isMobile.min.js');
+  drupal_add_js($path . '/js/modernizr-history.min.js');
+  drupal_add_js($path . '/js/jquery.proximity.js');
   drupal_add_js($path . '/js/proximity.js');
   drupal_add_js($path . '/js/proximity.ajax.js');
   //drupal_add_css($path . '/css/proximity.css');

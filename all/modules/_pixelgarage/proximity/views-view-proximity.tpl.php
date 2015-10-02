@@ -13,7 +13,7 @@
     <div class="pe-item pe-item-ajax <?php print 'pe-item-' . $ajax_load_params[$id]; ?> <?php if ($classes_array[$id]) print $classes_array[$id]; ?>" style="margin-left: -4px; width: <?php print $percentage_width; ?>%">
       <div class="pe-item-inner">
         <!-- modal trigger -->
-        <a class="btn" role="button" href="<?php print $deep_link_base_url . $ajax_load_params[$id]; ?>" data-ajax-load-param="<?php print $ajax_load_params[$id]; ?>" data-toggle="modal" data-target="#pe-modal-dialog-<?php print $container_index; ?>" >
+        <a class="btn" role="button" href="<?php print $item_base_url . $ajax_load_params[$id]; ?>" data-ajax-load-param="<?php print $ajax_load_params[$id]; ?>" data-toggle="modal" data-target="#pe-modal-dialog-<?php print $container_index; ?>" >
           <?php print $row; ?>
         </a>
       </div>
@@ -37,7 +37,7 @@
         </div>
         <!-- Body -->
         <div class="modal-body">
-          <?php if ($rendered_item) print render($rendered_item) ; ?>
+          <?php if ($rendered_item) print $rendered_item ; ?>
         </div>
         <!-- Footer -->
         <div class="modal-footer">
@@ -51,9 +51,9 @@
   <!--
   Content container (used for page transitions)
   The content for the body is retrieved via AJAX
-  -->
   <div id="pe-content-container-<?php print $container_index; ?>" class="pe-content-container" role="page">
     <div class="content"></div>
   </div>
+  -->
 
 </div>

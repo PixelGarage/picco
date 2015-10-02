@@ -7,9 +7,12 @@
  */
 
 /**
- * Alter the ajax load parameter array. The ajax load parameter array defines a specific ajax url parameter
- * for each proximity item. This parameter is added at the end of the ajax url and must be URL conform. The parameter can be used
- * to get an item specific content from the server (see next api function).
+ * Alters the proximity item load parameter array.
+ *
+ * The load parameter array defines a specific url parameter for each proximity item.
+ * This parameter is added at the end of the ajax url and must be unique and URL conform.
+ * The unique parameter defines, which item content has to be loaded from
+ * the server (see next api function).
  *
  * @param $container_index      int     Index of proximity container (if more than one container exists in one page).
  * @param $view_result          array   The result array of the view.
@@ -25,8 +28,9 @@ function hook_proximity_ajax_load_params_alter($container_index, $view_result, &
 }
 
 /**
- * Returns the item specific content as render array or html string. The $param attribute contains the item specific parameter
- * added to the ajax request.
+ * Returns the item specific content as render array or html string.
+ *
+ * The parameter $param contains the unique load parameter of the requested item.
  *
  * @param $container_index      int     Index of proximity container (if more than one container exists in one page).
  * @param $param                string  The item specific load parameter (see also hook_proximity_ajax_load_params_alter).
