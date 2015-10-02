@@ -5,7 +5,6 @@
         <h4 class="panel-title">
           <a class="accordion-toggle"
              data-toggle="collapse"
-             data-parent="#views-bootstrap-accordion-<?php print $id ?>"
              href="#collapse<?php print $key ?>">
             <span><?php print $titles[$key] ?></span><span class="fa fa-angle-down"></span>
           </a>
