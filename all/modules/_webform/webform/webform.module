@@ -2387,7 +2387,31 @@ function webform_client_form($form, &$form_state, $node, $submission = FALSE, $i
         $prev_page_labels[$component['page_num']] = !empty($component['extra']['prev_page_label']) ? t($component['extra']['prev_page_label']) : t('< Previous Page');
       }
       if ($filter == FALSE || _webform_client_form_rule_check($node, $component, $page_num, $input_values)) {
-        $component_value = isset($input_values[$cid]) ? $input_values[$cid] : NULL;
+        if (isset($input_values[$cid])) {
+          $component_value = $input_values[$cid];
+        }
+        elseif (isset($input_values[$component['form_key']])) {
+          $component_value = $input_values[$component['form_key']];
+          // Hack to support multiple files on the same form. Do this for file
+          // components as well as any component that has children (since the
+          // children might contain file components of their own).
+          if ($component['type'] == 'file' || !empty($component['children'])) {
+            if (!isset($form_state['webform_file_storage'])) {
+              $form_state['webform_file_storage'] = array();
+            }
+            // Merge the current submitted file into $form_state storage so it
+            // can be used to populate the file widget on subsequent Ajax
+            // requests.
+            $form_state['webform_file_storage'] = drupal_array_merge_deep($form_state['webform_file_storage'], $input_values);
+          }
+        }
+        elseif (isset($form_state['webform_file_storage'][$component['form_key']])) {
+          // Use the file storage from above, if available.
+          $component_value = $form_state['webform_file_storage'][$component['form_key']];
+        }
+        else {
+          $component_value = NULL;
+        }
         _webform_client_form_add_component($node, $component, $component_value, $form['submitted'], $form, $input_values, 'form', $page_num, $filter);
       }
     }
@@ -2806,7 +2830,15 @@ function _webform_client_form_add_component($node, $component, $component_value,
 
   if (isset($component['children']) && is_array($component['children'])) {
     foreach ($component['children'] as $scid => $subcomponent) {
-      $subcomponent_value = isset($input_values[$scid]) ? $input_values[$scid] : NULL;
+      if (isset($input_values[$scid])) {
+        $subcomponent_value = $input_values[$scid];
+      }
+      elseif (isset($component_value[$subcomponent['form_key']])) {
+        $subcomponent_value = $component_value[$subcomponent['form_key']];
+      }
+      else {
+        $subcomponent_value = NULL;
+      }
       if (_webform_client_form_rule_check($node, $subcomponent, $page_num, $input_values, $format)) {
         _webform_client_form_add_component($node, $subcomponent, $subcomponent_value, $parent_fieldset[$component['form_key']], $form, $input_values, $format, $page_num, $filter);
       }

@@ -314,12 +314,21 @@ function _webform_render_file($component, $value = NULL, $filter = TRUE) {
     $max_filesize = parse_size($set_filesize);
   }
 
+  if (isset($value[0])) {
+    $default_value = $value[0];
+  }
+  elseif (isset($value['fid'])) {
+    $default_value = $value['fid'];
+  }
+  else {
+    $default_value = NULL;
+  }
   $element = array(
     '#type' => 'managed_file',
     '#title' => $filter ? webform_filter_xss($component['name']) : $component['name'],
     '#title_display' => $component['extra']['title_display'] ? $component['extra']['title_display'] : 'before',
     '#required' => $component['required'],
-    '#default_value' => isset($value[0]) ? $value[0] : NULL,
+    '#default_value' => $default_value,
     '#attributes' => $component['extra']['attributes'],
     '#upload_validators' => array(
       'file_validate_size' => array($max_filesize),
